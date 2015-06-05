@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo" >
+
+    <TextView
+        android:id="@+id/lblCopy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:textColor="#ffffff"
+        android:text="@string/copyright"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo_gym" />
+
+    <EditText
+        android:id="@+id/txtUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:layout_above="@+id/txtPwd"
+        android:hint="@string/txtUser"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff" />
+
+    <EditText
+        android:id="@+id/txtPwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtUser"
+        android:layout_below="@+id/logo"
+        android:ems="10"
+        android:hint="@string/txtPwd"
+        android:inputType="textPassword"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/txtPwd"
+        android:layout_alignRight="@+id/txtPwd"
+        android:layout_below="@+id/txtPwd"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/boton_entrar"
+        android:onClick="login"
+        android:text="@string/btnAcceder" />
+
+    <ProgressBar
+        android:id="@+id/pbLogin"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txtUser"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="13dp"
+        android:visibility="invisible" />
+
+</RelativeLayout><!-- From: file:/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/res/layout-large/login.xml -->

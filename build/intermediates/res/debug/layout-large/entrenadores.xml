@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo" >
+
+    <TextView
+        android:id="@+id/lblCopyMenuE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:text="@string/copyright"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ListView
+        android:id="@+id/lsEntrenadores"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_above="@id/lblCopyMenuE"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" >
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/contenedorTxts"
+        android:layout_width="450dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/txtCedulaEntrenador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/txtCedulaE"
+            android:inputType="number"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff" />
+
+        <EditText
+            android:id="@+id/txtNombreE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/txtNombreE"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff" />
+
+        <EditText
+            android:id="@+id/txtPrimerApellidoE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/txtPrimerApellidoE"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff" />
+
+        <EditText
+            android:id="@+id/txtSegundoApellidoE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/txtSegundoApellidoE"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/contenedorBotones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/contenedorTxts"
+        android:layout_alignRight="@+id/lsEntrenadores"
+        android:layout_alignTop="@+id/contenedorTxts"
+        android:layout_marginLeft="35dp"
+        android:layout_toRightOf="@+id/contenedorTxts"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/btnCrearE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/boton_nuevo_entrenador"
+                android:onClick="guardar" />
+
+            <TextView
+                android:id="@+id/lblNE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Crear"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/btnModificarE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/boton_modif_entrenador"
+                android:onClick="modificar"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/lblME"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Modificar"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pbEntrenador"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_marginBottom="15dp"
+        android:layout_above="@+id/lsEntrenadores"
+        android:layout_centerHorizontal="true"
+        android:indeterminate="false" />
+
+</RelativeLayout><!-- From: file:/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/res/layout-large/entrenadores.xml -->

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Fitness Centre Administrador</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- General -->
+    <string name="copyright">Gimnasio Fitness centre. Todos los derechos reservados.</string>
+    <string name="txtProgressTitle">Espere por favor...</string>
+    <string name="txtProgressMsg">Cargando...</string>
+    <string name="btnGuardar">Guardar</string>
+    <string name="btnModificar">Modificar</string>
+    <string name="title_error">Error</string>
+    <string name="err_unexp">Ha ocurrido un error inesperado</string>
+    <string name="alert_aceptar"></string>
+    <string name="err_emptyTxt">Los campos son obligatorios!</string>
+    <string name="err_wrongData">El usuario o contraseña son incorrectos</string>
+    <string name="successEntre">Éxito! El entrenador ha sido guardado correctamente</string>
+
+    <!-- Main menu -->
+    <string name="btnClientes">Clientes</string>
+    <string name="btnRutina">Rutinas</string>
+    <string name="btnEjercicios">Ejercicios</string>
+    <string name="btnEntrenador">Entrenadores</string>
+
+    <!-- Errores -->
+    <string name="errMissUser">Digite un usuario válido!</string>
+    <string name="errMissPwd">Digite una contraseña válida!</string>
+
+    <!-- Login -->
+    <string name="txtUser">Digite el usuario</string>
+    <string name="btnAcceder">Acceder</string>
+    <string name="txtPwd">Password</string>
+
+    <!-- Entrenadores -->
+    <string name="txtCedulaE">Número de cédula</string>
+    <string name="txtNombreE">Nombre</string>
+    <string name="txtPrimerApellidoE">Primer apellido</string>
+    <string name="txtSegundoApellidoE">Segundo apellido</string>
+
+    <!-- Ejercicios -->
+    <string name="btnDeltoides">Deltoides</string>
+    <string name="btnPectorales">Pectorales</string>
+    <string name="btnAntebrazo">Antebrazo</string>
+    <string name="btnBiceps">Biceps</string>
+    <string name="btnPiernas">Piernas</string>
+    <string name="btnAbs">Abs</string>
+    <string name="btnGemelos">Gemelos</string>
+    <string name="btnEspalda">Espalda</string>
+    <string name="btnTriceps">Triceps</string>
+    <string name="btnVer">Ver</string>
+
+    <!-- Clientes -->
+    <string name="btnInformacionPersonal">Datos personales</string>
+    <string name="btnPorcentajesG">Porcentajes de grasa</string>
+    <string name="btnMedidas">Medidas corporales</string>
+    <string name="txtCedula">Cédula</string>
+    <string name="txtNombre">Nombre</string>
+    <string name="txtPrimerApellido">Primer apellido</string>
+    <string name="txtSegundoApellido">Segundo apellido</string>
+    <string name="txtFechaNacimiento">Fecha de nacimiento</string>
+    <string name="lblNuevoCliente">Nuevo cliente</string>
+    <string name="lblModificarCliente">Modificar cliente</string>
+    <string name="lblMasc">Masculino</string>
+    <string name="lblFem">Femenino</string>
+    <string name="txtTriceps">Triceps</string>
+    <string name="txtSubes">Subescapular</string>
+    <string name="txtSupra">Suprailiaca</string>
+    <string name="Abdominal">Abdominal</string>
+    <string name="txtMusculo">Músculo</string>
+    <string name="txtGastro">Gastronemio</string>
+    <string name="txtNuevoCliente">Nuevo cliente</string>
+    <string name="txtPechoH">Pecho (hombres)</string>
+    <string name="btnObervaciones">Observaciones</string>
+    <string name="lblPruebaPliegues">Prueba de pliegues</string>
+    <string name="txtPorcenGrasa">% de grasa</string>
+    <string name="txtPorcenMasaMusc">% de grasa muscular</string>
+    <string name="txtimc">I.M.C</string>
+    <string name="txtIndVice">Índice viceral</string>
+    <string name="txtKcal">Kcal. en reposo</string>
+    <string name="txtPresion">Presión sis./dia.</string>
+    <string name="txtPulso">Pulso</string>
+    <string name="txtGlucosa">Glucosa(mg./dl)</string>
+    <string name="txtEstatura">Estatura</string>
+    <string name="txtPeso">Peso</string>
+    <string name="txtEspalda">Espalda</string>
+    <string name="txtUmbilical">Umbilical</string>
+    <string name="txtCaderas">Caderas</string>
+    <string name="txtMusloDer">Muslo derecho</string>
+    <string name="txtMusloIzq">Muslo izquierdo</string>
+    <string name="txtBrazoDer">Brazo derecho</string>
+    <string name="txtBrazoIzq">Brazo izquierdo</string>
+    <string name="txtAnteDer">Antebrazo derecho</string>
+    <string name="txtAnteIzq">Antebrazo izquierdo</string>
+    <string name="txtPecho">Pecho</string>
+    <string name="txtGastroDer">Gastronemio derecho</string>
+    <string name="txtGastroIzq">Gastronemio izquierdo</string>
+    <string name="lblEntrenadores">Entrenadores:</string>
+    <string name="btnAgregarEjercicio">Agregar ejercicio</string>
+
+    <!-- Rutinas -->
+    <string name="lblBorrarE">Eliminar ejercicio</string>
+    <string name="lblDataRut">Datos básicos de la rutina</string>
+    <string name="txtObjetivo">Objetivo...</string>
+    <string name="txtObservaciones">Observaciones...</string>
+    <string name="btnDia1">Día 1</string>
+    <string name="btnDia2">Día 2</string>
+    <string name="btnDia3">Día 3</string>
+    <string name="btnDia4">Día 4</string>
+
+</resources>

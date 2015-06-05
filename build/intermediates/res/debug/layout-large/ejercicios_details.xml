@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo" >
+
+    <ListView
+        android:id="@+id/lsEjercicios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/lblCopy"
+        android:layout_below="@+id/contenedorLblZona"
+        android:layout_marginBottom="35dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="670dp" >
+    </ListView>
+
+    <TextView
+        android:id="@+id/lblCopy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
+        android:text="@string/copyright"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <LinearLayout
+        android:id="@+id/contenedorLblZona"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lsEjercicios"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/lsEjercicios"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="35dp"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/lblNombreZona"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="zona container"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#F00000" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/lsEjercicios"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/lsEjercicios"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_toRightOf="@+id/contenedorLblZona"
+        android:gravity="center" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/imgEjercicio"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/lblDescripcion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Seleccione un ejercicio"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
+        </ScrollView>
+
+        <ImageView
+            android:id="@+id/imgEjercicio"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@null" />
+    </RelativeLayout>
+
+</RelativeLayout><!-- From: file:/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/res/layout-large/ejercicios_details.xml -->

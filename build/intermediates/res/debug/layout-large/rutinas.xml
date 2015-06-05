@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo" >
+
+    <ScrollView
+        android:id="@+id/contenedorDataRutina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/contenedorBotonesDias"
+        android:layout_marginLeft="15dp" >
+
+        <RelativeLayout
+            android:id="@+id/contenedorDataRut"
+            android:layout_width="257dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/lblData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="15dp"
+                android:text="@string/lblDataRut"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <EditText
+                android:id="@+id/txtObjetivo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/lblData"
+                android:layout_marginTop="7dp"
+                android:hint="@string/txtObjetivo" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/txtObservaciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/txtObjetivo"
+                android:layout_marginTop="7dp"
+                android:ems="10"
+                android:hint="@string/txtObservaciones"
+                android:inputType="textMultiLine" >
+            </EditText>
+        </RelativeLayout>
+    </ScrollView>
+
+    <ListView
+        android:id="@+id/elv"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_above="@+id/btnAgregarEjercicio"
+        android:layout_alignLeft="@+id/contenedorDataRutina"
+        android:layout_alignRight="@+id/contenedorDataRutina"
+        android:layout_below="@+id/contenedorDataRutina"
+        android:layout_marginTop="7dp" >
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/contenedorBotonesDias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@+id/contenedorDataRutina"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btnDia1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/boton_dia_1" />
+
+        <Button
+            android:id="@+id/btnDia2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/boton_dia_2" />
+
+        <Button
+            android:id="@+id/btnDia3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/boton_dia_3" />
+
+        <Button
+            android:id="@+id/btnDia4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_dia_4" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lsRutina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/contenedorBotonesDias"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/contenedorBotonesDias"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="30dp" >
+    </ListView>
+
+    <Button
+        android:id="@+id/btnAgregarEjercicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/elv"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/elv"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/boton_verde_3"
+        android:text="@string/btnAgregarEjercicio" />
+
+</RelativeLayout><!-- From: file:/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/res/layout-large/rutinas.xml -->
