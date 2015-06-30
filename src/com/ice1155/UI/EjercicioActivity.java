@@ -50,14 +50,14 @@ public class EjercicioActivity extends Activity {
 		imgCuerpo.setImageResource(R.drawable.cuerpo_deltoide);
 		
 		deltoides.setBackgroundResource(R.drawable.boton_seleccion);
-		pectorales.setBackground(null);
-		antebrazo.setBackground(null);
-		biceps.setBackground(null);
-		piernas.setBackground(null);
-		abs.setBackground(null);
-		gemelos.setBackground(null);
-		espalda.setBackground(null);
-		triceps.setBackground(null);
+		pectorales.setBackgroundDrawable(null);
+		antebrazo.setBackgroundDrawable(null);
+		biceps.setBackgroundDrawable(null);
+		piernas.setBackgroundDrawable(null);
+		abs.setBackgroundDrawable(null);
+		gemelos.setBackgroundDrawable(null);
+		espalda.setBackgroundDrawable(null);
+		triceps.setBackgroundDrawable(null);
 		
 		actionCode = 1;
 
@@ -68,15 +68,15 @@ public class EjercicioActivity extends Activity {
 	public void pectorales(View v) {
 		imgCuerpo.setImageResource(R.drawable.cuerpo_pectorales);
 		
-		deltoides.setBackground(null);
+		deltoides.setBackgroundDrawable(null);
 		pectorales.setBackgroundResource(R.drawable.boton_seleccion);
-		antebrazo.setBackground(null);
-		biceps.setBackground(null);
-		piernas.setBackground(null);
-		abs.setBackground(null);
-		gemelos.setBackground(null);
-		espalda.setBackground(null);
-		triceps.setBackground(null);
+		antebrazo.setBackgroundDrawable(null);
+		biceps.setBackgroundDrawable(null);
+		piernas.setBackgroundDrawable(null);
+		abs.setBackgroundDrawable(null);
+		gemelos.setBackgroundDrawable(null);
+		espalda.setBackgroundDrawable(null);
+		triceps.setBackgroundDrawable(null);
 		
 		actionCode = 2;
 
@@ -87,15 +87,15 @@ public class EjercicioActivity extends Activity {
 	public void antebrazo(View v) {
 		imgCuerpo.setImageResource(R.drawable.cuerpo_antebrazo);
 		
-		deltoides.setBackground(null);
-		pectorales.setBackground(null);
+		deltoides.setBackgroundDrawable(null);
+		pectorales.setBackgroundDrawable(null);
 		antebrazo.setBackgroundResource(R.drawable.boton_seleccion);
-		biceps.setBackground(null);
-		piernas.setBackground(null);
-		abs.setBackground(null);
-		gemelos.setBackground(null);
-		espalda.setBackground(null);
-		triceps.setBackground(null);
+		biceps.setBackgroundDrawable(null);
+		piernas.setBackgroundDrawable(null);
+		abs.setBackgroundDrawable(null);
+		gemelos.setBackgroundDrawable(null);
+		espalda.setBackgroundDrawable(null);
+		triceps.setBackgroundDrawable(null);
 		
 		actionCode = 3;
 
@@ -106,15 +106,15 @@ public class EjercicioActivity extends Activity {
 	public void biceps(View v) {
 		imgCuerpo.setImageResource(R.drawable.cuerpo_biceps);
 		
-		deltoides.setBackground(null);
-		pectorales.setBackground(null);
-		antebrazo.setBackground(null);
+		deltoides.setBackgroundDrawable(null);
+		pectorales.setBackgroundDrawable(null);
+		antebrazo.setBackgroundDrawable(null);
 		biceps.setBackgroundResource(R.drawable.boton_seleccion);
-		piernas.setBackground(null);
-		abs.setBackground(null);
-		gemelos.setBackground(null);
-		espalda.setBackground(null);
-		triceps.setBackground(null);
+		piernas.setBackgroundDrawable(null);
+		abs.setBackgroundDrawable(null);
+		gemelos.setBackgroundDrawable(null);
+		espalda.setBackgroundDrawable(null);
+		triceps.setBackgroundDrawable(null);
 		
 		actionCode = 4;
 
@@ -125,15 +125,15 @@ public class EjercicioActivity extends Activity {
 	public void piernas(View v) {
 		imgCuerpo.setImageResource(R.drawable.cuerpo_pierna);
 		
-		deltoides.setBackground(null);
-		pectorales.setBackground(null);
-		antebrazo.setBackground(null);
-		biceps.setBackground(null);
+		deltoides.setBackgroundDrawable(null);
+		pectorales.setBackgroundDrawable(null);
+		antebrazo.setBackgroundDrawable(null);
+		biceps.setBackgroundDrawable(null);
 		piernas.setBackgroundResource(R.drawable.boton_seleccion);
-		abs.setBackground(null);
-		gemelos.setBackground(null);
-		espalda.setBackground(null);
-		triceps.setBackground(null);
+		abs.setBackgroundDrawable(null);
+		gemelos.setBackgroundDrawable(null);
+		espalda.setBackgroundDrawable(null);
+		triceps.setBackgroundDrawable(null);
 		
 		actionCode = 5;
 
@@ -144,15 +144,15 @@ public class EjercicioActivity extends Activity {
 	public void abs(View v) {
 		imgCuerpo.setImageResource(R.drawable.cuerpo_abdominales);
 		
-		deltoides.setBackground(null);
-		pectorales.setBackground(null);
-		antebrazo.setBackground(null);
-		biceps.setBackground(null);
-		piernas.setBackground(null);
+		deltoides.setBackgroundDrawable(null);
+		pectorales.setBackgroundDrawable(null);
+		antebrazo.setBackgroundDrawable(null);
+		biceps.setBackgroundDrawable(null);
+		piernas.setBackgroundDrawable(null);
 		abs.setBackgroundResource(R.drawable.boton_seleccion);
-		gemelos.setBackground(null);
-		espalda.setBackground(null);
-		triceps.setBackground(null);
+		gemelos.setBackgroundDrawable(null);
+		espalda.setBackgroundDrawable(null);
+		triceps.setBackgroundDrawable(null);
 		
 		actionCode = 6;
 
@@ -163,15 +163,15 @@ public class EjercicioActivity extends Activity {
 	public void gemelos(View v) {
 		imgCuerpo.setImageResource(R.drawable.cuerpo_gemelos);
 		
-		deltoides.setBackground(null);
-		pectorales.setBackground(null);
-		antebrazo.setBackground(null);
-		biceps.setBackground(null);
-		piernas.setBackground(null);
-		abs.setBackground(null);
+		deltoides.setBackgroundDrawable(null);
+		pectorales.setBackgroundDrawable(null);
+		antebrazo.setBackgroundDrawable(null);
+		biceps.setBackgroundDrawable(null);
+		piernas.setBackgroundDrawable(null);
+		abs.setBackgroundDrawable(null);
 		gemelos.setBackgroundResource(R.drawable.boton_seleccion);
-		espalda.setBackground(null);
-		triceps.setBackground(null);
+		espalda.setBackgroundDrawable(null);
+		triceps.setBackgroundDrawable(null);
 		
 		actionCode = 7;
 
@@ -182,15 +182,15 @@ public class EjercicioActivity extends Activity {
 	public void espalda(View v) {
 		imgCuerpo.setImageResource(R.drawable.cuerpo_espalda);
 		
-		deltoides.setBackground(null);
-		pectorales.setBackground(null);
-		antebrazo.setBackground(null);
-		biceps.setBackground(null);
-		piernas.setBackground(null);
-		abs.setBackground(null);
-		gemelos.setBackground(null);
+		deltoides.setBackgroundDrawable(null);
+		pectorales.setBackgroundDrawable(null);
+		antebrazo.setBackgroundDrawable(null);
+		biceps.setBackgroundDrawable(null);
+		piernas.setBackgroundDrawable(null);
+		abs.setBackgroundDrawable(null);
+		gemelos.setBackgroundDrawable(null);
 		espalda.setBackgroundResource(R.drawable.boton_seleccion);
-		triceps.setBackground(null);
+		triceps.setBackgroundDrawable(null);
 		
 		actionCode = 8;
 
@@ -201,14 +201,14 @@ public class EjercicioActivity extends Activity {
 	public void triceps(View v) {
 		imgCuerpo.setImageResource(R.drawable.cuerpo_triceps);
 		
-		deltoides.setBackground(null);
-		pectorales.setBackground(null);
-		antebrazo.setBackground(null);
-		biceps.setBackground(null);
-		piernas.setBackground(null);
-		abs.setBackground(null);
-		gemelos.setBackground(null);
-		espalda.setBackground(null);
+		deltoides.setBackgroundDrawable(null);
+		pectorales.setBackgroundDrawable(null);
+		antebrazo.setBackgroundDrawable(null);
+		biceps.setBackgroundDrawable(null);
+		piernas.setBackgroundDrawable(null);
+		abs.setBackgroundDrawable(null);
+		gemelos.setBackgroundDrawable(null);
+		espalda.setBackgroundDrawable(null);
 		triceps.setBackgroundResource(R.drawable.boton_seleccion);
 		
 		actionCode = 9;

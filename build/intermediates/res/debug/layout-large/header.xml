@@ -41,4 +41,5 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ffffff" />
 
-</LinearLayout><!-- From: file:/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/res/layout-large/header.xml -->
+</LinearLayout>
+<!-- From: file:/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/res/layout-large/header.xml -->

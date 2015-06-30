@@ -124,6 +124,7 @@ public class LoginActivity extends Activity {
 
                     Intent i = new Intent(activity, MainMenuActivity.class);
                     activity.startActivity(i);
+                    finish();
                 }
             } else
                 Toast.makeText(getApplicationContext(), "Ha ocurrido un error inesperado...", Toast.LENGTH_SHORT).show();

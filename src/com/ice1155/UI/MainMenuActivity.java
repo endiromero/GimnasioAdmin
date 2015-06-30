@@ -51,7 +51,9 @@ public class MainMenuActivity extends Activity {
 	}
 
 	public void goRutina(View v) {
-		lc.execute(Constantes.MOSTRAR_TODOS_CLIENTES);
+		//lc.execute(Constantes.MOSTRAR_TODOS_CLIENTES);
+		Intent i = new Intent(getApplicationContext(), ListClientesActivity.class);
+		startActivity(i);
 	}
 
 	// Misc. methods
@@ -86,6 +88,7 @@ public class MainMenuActivity extends Activity {
 
 		@Override
 		protected void onPostExecute(String response) {
+			markAsDone();
 			if (response != null) {
 				ArrayList<Cliente> arr = new ArrayList<Cliente>();
 				try {
@@ -98,7 +101,6 @@ public class MainMenuActivity extends Activity {
 					e.printStackTrace();
 				}
 			}
-			markAsDone();
 		}
 	}
 

@@ -7,6 +7,8 @@ import java.util.GregorianCalendar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.w3c.dom.Text;
+
 import com.google.gson.Gson;
 import com.ice1155.BL.ListEntrenadoresAdapter;
 import com.ice1155.DA.Cliente;
@@ -17,11 +19,15 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -75,6 +81,12 @@ public class ClienteActivity extends Activity {
 	private EditText txtGastroDer;
 	private EditText txtGastroIzq;
 	private EditText txtMusculo;
+
+    // data entrenadores
+    private TextView lblCedulaE;
+    private TextView lblNombreE;
+    private TextView lblPrimerApellidoE;
+    private TextView lblSegundoApellidoE;
 
 	// Botones
 	private Button btnDatosP;
@@ -256,7 +268,6 @@ public class ClienteActivity extends Activity {
 				new OnDateSetListener() {
 					public void onDateSet(DatePicker datepicker,
 							int selectedyear, int selectedmonth, int selectedday) {
-						
 						anoNacimiento = selectedyear;
 						mesNacimiento = selectedmonth;
 						diaNacimiento = selectedday;
@@ -316,6 +327,12 @@ public class ClienteActivity extends Activity {
 
 		// Entrenadores
 		lsEntrenadoresC = (ListView) findViewById(R.id.lsEntrenadoresC);
+        lblCedulaE = (TextView) findViewById(R.id.lblCedulaEC);
+        lblNombreE = (TextView) findViewById(R.id.lblNombreEC);
+        lblPrimerApellidoE = (TextView) findViewById(R.id.lblApe1EC);
+        lblSegundoApellidoE = (TextView) findViewById(R.id.lblApe2EC);
+
+        new RequestCliente(this).execute("dummy","3");
 	}
 
 	// Entrenador converter
@@ -374,16 +391,45 @@ public class ClienteActivity extends Activity {
 			activity.maskAsDone();
 			if (response.equals("")) {
 				switch (ACTION_CODE) {
-				// post
+				// post clientes
 				case 1:
 
 					break;
 
-				// put
+				// put clientes
 				case 2:
 
 					break;
 
+                // get entrenadores
+				case 3:
+                    ArrayList<Entrenador> arr = new ArrayList<Entrenador>();
+                    JSONArray ja = null;
+                    try {
+                        ja = new JSONArray(response);
+                        View header = (View) getLayoutInflater().inflate(R.layout.header, null);
+                        lsEntrenadoresC.addHeaderView(header, "", false);
+                        lsEntrenadoresC.setAdapter(new ListTrainersAdapter(getApplicationContext(), R.layout.entrenadores_row_layout, convertToEntrenador(ja, arr)));
+
+                        lsEntrenadoresC.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                TextView cedula = (TextView) view.findViewById(R.id.lblCedulaEC);
+                                TextView nombre = (TextView) view.findViewById(R.id.lblNombreEC);
+                                TextView pApe = (TextView) view.findViewById(R.id.lblApe1EC);
+                                TextView sApe = (TextView) view.findViewById(R.id.lblApe2EC);
+
+                                lblCedulaE.setText(cedula.getText().toString());
+                                lblNombreE.setText(nombre.getText().toString());
+                                lblPrimerApellidoE.setText(pApe.getText().toString());
+                                lblSegundoApellidoE.setText(sApe.getText().toString());
+                            }
+                        });
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+					break;
 				// error
 				default:
 					Toast.makeText(activity, R.string.err_unexp,
@@ -398,7 +444,7 @@ public class ClienteActivity extends Activity {
 						JSONArray ja = new JSONArray(response);
 						convertToEntrenador(ja, arr);
 
-						ListEntrenadoresAdapter adapter = new ListEntrenadoresAdapter(
+						ListTrainersAdapter adapter = new ListTrainersAdapter(
 								activity.getApplicationContext(),
 								R.layout.entrenadores_row_layout, arr);
 
@@ -420,9 +466,7 @@ public class ClienteActivity extends Activity {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
-
 					activity.maskAsDone();
-
 				} else {
 					Toast.makeText(activity,
 							"No hay entrenadores registrados...",
@@ -431,4 +475,54 @@ public class ClienteActivity extends Activity {
 			}
 		}
 	}
+
+    //adapter para los entrenadores
+    private class ListTrainersAdapter extends ArrayAdapter<Entrenador> {
+        private Context context;
+        private int resource;
+        private ArrayList<Entrenador> objects;
+
+        public ListTrainersAdapter(Context context, int resource, ArrayList<Entrenador> objects) {
+            super(context, resource, objects);
+            this.context = context;
+            this.resource = resource;
+            this.objects = objects;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View row = convertView;
+            EntrenadorHolder holder = null;
+
+            if (row == null) {
+                LayoutInflater inflater = getLayoutInflater();
+                row = inflater.inflate(resource, parent, false);
+
+                holder = new EntrenadorHolder();
+                holder.lblApe1EC = (TextView) row.findViewById(R.id.lblApe1EC);
+                holder.lblApe2EC = (TextView) row.findViewById(R.id.lblApe2EC);
+                holder.lblCedulaEC = (TextView) row.findViewById(R.id.lblCedulaEC);
+                holder.lblNombreEC = (TextView) row.findViewById(R.id.lblNombreEC);
+
+                row.setTag(holder);
+            } else {
+                holder = (EntrenadorHolder) row.getTag();
+            }
+
+            Entrenador c = objects.get(position);
+            holder.lblCedulaEC.setText("" + c.getCedula().toString());
+            holder.lblApe2EC.setText(c.getSegundoApellido());
+            holder.lblApe1EC.setText(c.getPrimerApellido());
+            holder.lblNombreEC.setText(c.getNombre());
+
+            return row;
+        }
+
+        private class EntrenadorHolder {
+            TextView lblCedulaEC;
+            TextView lblNombreEC;
+            TextView lblApe1EC;
+            TextView lblApe2EC;
+        }
+    }
 }
