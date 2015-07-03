@@ -6,13 +6,13 @@ import java.util.Date;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Cliente implements Parcelable {
+public class Cliente implements Serializable {
 	private long carne;
 
 	private Entrenador entrenador_id;
 	// Informacion general
-	private String primerApellido;
-	private String segundoApellido;
+	private String primer_apellido;
+	private String segundo_apellido;
 	private String nombre;
 	private Date fecha_nacimiento;
 	private int edad;
@@ -53,7 +53,7 @@ public class Cliente implements Parcelable {
 	private double glucosaPorG;
 
 	private String observaciones;
-
+/*
 	public static final Parcelable.Creator<Cliente> CREATOR = new Creator<Cliente>() {
 		@Override
 		public Cliente createFromParcel(Parcel source) {
@@ -64,7 +64,7 @@ public class Cliente implements Parcelable {
 		public Cliente[] newArray(int size) {
 			return new Cliente[size];
 		}
-	};
+	};*/
 
 	public Cliente(long carne, Entrenador entrenador_id,
 			String primer_apellido, String segundo_apellido, String nombre, Date fechaMed,
@@ -82,8 +82,8 @@ public class Cliente implements Parcelable {
 		this.carne = carne;
 		this.musculoPorG = musculoPorG;
 		this.entrenador_id = entrenador_id;
-		this.primerApellido = primer_apellido;
-		this.segundoApellido = segundo_apellido;
+		this.primer_apellido = primer_apellido;
+		this.segundo_apellido = segundo_apellido;
 		this.nombre = nombre;
 		this.fecha_nacimiento = fechaNacimiento;
 		this.fechaMed = fechaMed;
@@ -125,7 +125,7 @@ public class Cliente implements Parcelable {
 	}
 
 	public Cliente(Parcel in) {
-		readFromParcel(in);
+		//readFromParcel(in);
 	}
 
 	public long getCarne() {
@@ -136,7 +136,15 @@ public class Cliente implements Parcelable {
 		this.carne = carne;
 	}
 
-	public Entrenador getentrenador_id() {
+    public double getMusculoPorG() {
+        return musculoPorG;
+    }
+
+    public void setMusculoPorG(double musculoPorG) {
+        this.musculoPorG = musculoPorG;
+    }
+
+    public Entrenador getentrenador_id() {
 		return entrenador_id;
 	}
 
@@ -145,19 +153,19 @@ public class Cliente implements Parcelable {
 	}
 
 	public String getprimer_apellido() {
-		return primerApellido;
+		return primer_apellido;
 	}
 
 	public void setprimer_apellido(String primer_apellido) {
-		this.primerApellido = primer_apellido;
+		this.primer_apellido = primer_apellido;
 	}
 
 	public String getsegundo_apellido() {
-		return segundoApellido;
+		return segundo_apellido;
 	}
 
 	public void setsegundo_apellido(String segundo_apellido) {
-		this.segundoApellido = segundo_apellido;
+		this.segundo_apellido = segundo_apellido;
 	}
 
 	public String getNombre() {
@@ -427,8 +435,8 @@ public class Cliente implements Parcelable {
 	@Override
 	public String toString() {
 		return "Cliente [carne=" + carne + ", entrenador_id=" + entrenador_id
-				+ ", primer_apellido=" + primerApellido
-				+ ", segundo_apellido=" + segundoApellido + ", nombre="
+				+ ", primer_apellido=" + primer_apellido
+				+ ", segundo_apellido=" + segundo_apellido + ", nombre="
 				+ nombre + ", fechaNacimiento=" + fecha_nacimiento + ", edad="
 				+ edad + ", sexo=" + sexo + ", estatura=" + estatura
 				+ ", pesoKgs=" + pesoKgs + ", pecho=" + pecho + ", espalda="
@@ -448,7 +456,7 @@ public class Cliente implements Parcelable {
 				+ ", pulsoPorG=" + pulsoPorG + ", glucosaPorG=" + glucosaPorG
 				+ ", observaciones=" + observaciones + "]";
 	}
-
+/*
 	@Override
 	public int describeContents() {
 		// TODO Auto-generated method stub
@@ -542,5 +550,5 @@ public class Cliente implements Parcelable {
 		dest.writeDouble(presionPorG);
 		dest.writeDouble(pulsoPorG);
 		dest.writeDouble(glucosaPorG);
-	}
+	}*/
 }

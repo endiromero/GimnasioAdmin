@@ -55,5 +55,4 @@ public class ListClientesAdapter extends ArrayAdapter<Cliente> {
 		TextView id;
 		TextView txtNombre;
 	}
-
 }

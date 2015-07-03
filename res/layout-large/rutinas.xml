@@ -22,10 +22,12 @@
                 android:id="@+id/lblData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:textColor="#F00000"
                 android:layout_marginBottom="15dp"
                 android:text="@string/lblDataRut"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
             <EditText
                 android:id="@+id/txtObjetivo"
@@ -35,6 +37,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@id/lblData"
                 android:layout_marginTop="7dp"
+                android:textColorHint="#ffffff"
                 android:hint="@string/txtObjetivo" >
             </EditText>
 
@@ -46,6 +49,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@id/txtObjetivo"
                 android:layout_marginTop="7dp"
+                android:textColorHint="#ffffff"
+                android:layout_marginBottom="15dp"
                 android:ems="10"
                 android:hint="@string/txtObservaciones"
                 android:inputType="textMultiLine" >
@@ -80,6 +85,7 @@
             android:id="@+id/btnDia1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="diaUno"
             android:layout_marginRight="15dp"
             android:background="@drawable/boton_dia_1" />
 
@@ -87,6 +93,7 @@
             android:id="@+id/btnDia2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="diaDos"
             android:layout_marginRight="15dp"
             android:background="@drawable/boton_dia_2" />
 
@@ -95,12 +102,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="15dp"
+            android:onClick="diaTres"
             android:background="@drawable/boton_dia_3" />
 
         <Button
             android:id="@+id/btnDia4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="diaCuatro"
             android:background="@drawable/boton_dia_4" />
     </LinearLayout>
 
@@ -109,11 +118,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/contenedorBotonesDias"
-        android:layout_alignParentBottom="true"
         android:layout_below="@+id/contenedorBotonesDias"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="30dp" >
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_above="@+id/btnAgregarEjercicio">
     </ListView>
+
+    <TextView
+        android:id="@+id/lblCopy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:textColor="#ffffff"
+        android:text="@string/copyright"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
         android:id="@+id/btnAgregarEjercicio"
@@ -122,8 +143,22 @@
         android:layout_alignLeft="@+id/elv"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/elv"
+        android:onClick="agregarEjercicio"
         android:layout_marginTop="25dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/boton_verde_3"
         android:text="@string/btnAgregarEjercicio" />
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:text="Crear rutina"
+        android:textColor="#ffffff"
+        android:background="@drawable/boton_entrar"
+        android:id="@+id/btnCrearRutina"
+        android:layout_marginRight="30dp"
+        android:layout_alignBottom="@+id/btnAgregarEjercicio"
+        android:layout_alignRight="@+id/lsRutina"
+        android:layout_alignEnd="@+id/lsRutina" />
 
 </RelativeLayout>

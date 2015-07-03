@@ -22,21 +22,21 @@ public class Constantes {
 	public static final String MOSTRAR_TODOS_ENTRENADORES = ENTRENADORES + "list/";
 	public static final String GUARDAR_ENTRENADOR = ENTRENADORES+ "guardar/1";
 	public static final String EDITAR_ENTRENADOR = ENTRENADORES + "actualizar/1";
-	public static final String BORRAR_ENTRENADOR = ENTRENADORES + "borrar/1";
+	//public static final String BORRAR_ENTRENADOR = ENTRENADORES + "borrar/1";
 	
 	//Clientes
 	private static final String CLIENTES = SERVER + "perfiles/";
 	public static final String MOSTRAR_CLIENTES = CLIENTES + "mostrar/";
 	public static final String MOSTRAR_TODOS_CLIENTES = CLIENTES + "list/";
 	public static final String GUARDAR_CLIENTE = CLIENTES + "guardar/1";
-	public static final String EDITAR_CLIENTE = CLIENTES + "actualizar/1";
-	public static final String BORRAR_CLIENTE = CLIENTES + "borrar/1";
+	public static final String EDITAR_CLIENTE = CLIENTES + "actualizar/1/";
+	//public static final String BORRAR_CLIENTE = CLIENTES + "borrar/1";
 	
 	//Rutinas
 	private static final String RUTINAS = SERVER + "rutinas/";
 	public static final String MOSTRAR_RUTINA = RUTINAS + "rutinas/mostrar/";
 	public static final String GUARDAR_RUTINA = RUTINAS + "rutinas/guardar/1";
 	public static final String EDITAR_RUTINA = RUTINAS + "rutinas/actualizar/1";
-	public static final String BORRAR_RUTINA = RUTINAS + "rutinas/borrar/1";
+	//public static final String BORRAR_RUTINA = RUTINAS + "rutinas/borrar/1";
 
 }

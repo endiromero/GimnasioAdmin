@@ -1,26 +1,33 @@
 package com.ice1155.UI;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
-import com.ice1155.BL.ListClientesAdapter;
-import com.ice1155.BL.ListClientesOnItemClickListener;
 import com.ice1155.DA.Cliente;
 import com.ice1155.UT.Constantes;
 import com.ice1155.UT.RequestHandler;
-
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 public class ListClientesActivity extends Activity {
 	private ListView listaClientes;
+	private ProgressBar pbClientes;
+    private ArrayList<Cliente> arr = new ArrayList<Cliente>();
+
 	private RequestHandler rh = new RequestHandler();
 	private Gson gson = new Gson();
+    private int code;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -28,16 +35,52 @@ public class ListClientesActivity extends Activity {
 		setContentView(R.layout.clientes_list);
 
 		// obtengo la info de clientes
-		new LoadClientes().execute(Constantes.MOSTRAR_TODOS_CLIENTES);
+		listaClientes = (ListView) findViewById(R.id.listaClientes);
+		pbClientes = (ProgressBar) findViewById(R.id.pbListaClientes);
+		new LoadClientes(arr).execute(Constantes.MOSTRAR_TODOS_CLIENTES);
+
+        code = getIntent().getIntExtra("code", 0);
+        listaClientes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (code) {
+                    case 0:
+                        TextView carne = (TextView) view.findViewById(R.id.txtIdClienteAll);
+                        TextView nombre = (TextView) view.findViewById(R.id.txtNombreClienteAll);
+
+                        Intent i = new Intent(getApplicationContext(), RutinaActivity.class);
+                        i.putExtra("carne", "" + carne.getText().toString());
+                        i.putExtra("nombre", nombre.getText().toString());
+                        startActivity(i);
+                        break;
+
+                    case 1:
+                        Cliente c = arr.get(position);
+                        Intent i2 = new Intent(getApplicationContext(), ClienteActivity.class);
+                        i2.putExtra("code", 1);
+                        i2.putExtra("cliente", c);
+                        startActivity(i2);
+                        break;
+                }
+            }
+        });
 	}
 
-	private void startLoader() {}
+	private void startLoader() {
+		pbClientes.setVisibility(View.VISIBLE);
+	}
 
-	private void markAsDone() {}
+	private void markAsDone() {
+		pbClientes.setVisibility(View.INVISIBLE);
+	}
 
 	// Asynctask
 	private class LoadClientes extends AsyncTask<String, Void, String> {
-		private MainMenuActivity activity = null;
+        private ArrayList<Cliente> arr;
+
+        public LoadClientes(ArrayList<Cliente> arr) {
+            this.arr = arr;
+        }
 
 		@Override
 		protected void onPreExecute() {
@@ -54,17 +97,14 @@ public class ListClientesActivity extends Activity {
 		protected void onPostExecute(String response) {
 			markAsDone();
 			if (response != null) {
-				ArrayList<Cliente> arr = new ArrayList<Cliente>();
 				try {
 					JSONArray ja = new JSONArray(response);
 					convertToCliente(ja, arr);
 
-					ListClientesAdapter lca = new ListClientesAdapter(
+					ListCliRutAdapter lca = new ListCliRutAdapter(
 							ListClientesActivity.this, R.layout.clientes_row_layout, arr);
 
-					lv.setAdapter(lca);
-					lv.setOnItemClickListener(new ListClientesOnItemClickListener());
-
+					listaClientes.setAdapter(lca);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -80,5 +120,50 @@ public class ListClientesActivity extends Activity {
 			arr.add(c);
 		}
 		return arr;
+	}
+
+	// adapter de clientes
+	private class ListCliRutAdapter extends ArrayAdapter<Cliente> {
+		private Context context;
+		private int resource;
+		private ArrayList<Cliente> objects;
+
+		public ListCliRutAdapter(Context context, int resource, ArrayList<Cliente> objects) {
+			super(context, resource, objects);
+			this.context = context;
+			this.resource = resource;
+			this.objects = objects;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			View row = convertView;
+			ClienteHolder holder = null;
+
+			if (row == null) {
+				LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+				row = inflater.inflate(resource, parent, false);
+
+				holder = new ClienteHolder();
+				holder.id = (TextView) row.findViewById(R.id.txtIdClienteAll);
+				holder.txtNombre = (TextView) row
+						.findViewById(R.id.txtNombreClienteAll);
+
+				row.setTag(holder);
+			} else {
+				holder = (ClienteHolder) row.getTag();
+			}
+
+			Cliente c = objects.get(position);
+			holder.id.setText(c.getCarne() + "");
+			holder.txtNombre.setText(c.getNombre());
+
+			return row;
+		}
+
+		private class ClienteHolder {
+			TextView id;
+			TextView txtNombre;
+		}
 	}
 }

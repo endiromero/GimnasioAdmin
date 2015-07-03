@@ -1,5 +1,6 @@
 package com.ice1155.UI;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Calendar;
@@ -87,6 +88,7 @@ public class ClienteActivity extends Activity {
     private TextView lblNombreE;
     private TextView lblPrimerApellidoE;
     private TextView lblSegundoApellidoE;
+    private String cedulaEntrenador;
 
 	// Botones
 	private Button btnDatosP;
@@ -96,7 +98,6 @@ public class ClienteActivity extends Activity {
 
 	// fecha nacimiento missing
 	private EditText txtObservaciones;
-	private String cedulaEntrenador;
 	private RadioButton rbMasc;
 	private RadioButton rbFem;
 	private ProgressDialog pd;
@@ -115,6 +116,10 @@ public class ClienteActivity extends Activity {
 	private ArrayList<Entrenador> arr;
 	public Entrenador _e;
 
+    // data para edit
+    private int code;
+    private Cliente c;
+
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.clientes);
@@ -130,6 +135,58 @@ public class ClienteActivity extends Activity {
 
 		try {
 			init();
+
+            code = getIntent().getIntExtra("code", -1);
+            c = (Cliente) getIntent().getSerializableExtra("cliente");
+            if (c != null && (code == 1)) {
+                txtCedula.setText(""+c.getCarne());
+                //entrenador
+                txtApellido1.setText(c.getprimer_apellido());
+                txtApellido2.setText(c.getsegundo_apellido());
+                txtNombre.setText(c.getNombre());
+                //fecha
+                //fecha nacimiento
+                //edad
+                if(c.isSexo()) {
+                    rbMasc.setSelected(true);
+                    rbFem.setSelected(false);
+                }
+                else {
+                    rbMasc.setSelected(true);
+                    rbFem.setSelected(false);
+                }
+
+                txtEstatura.setText(""+c.getEstatura());
+                txtPeso.setText(""+c.getPesoKgs());
+                txtPecho.setText(""+c.getPecho());
+                txtEspalda.setText(""+c.getEspalda());
+                txtUmbilical.setText(""+c.getUmbilical());
+                txtCaderas.setText(""+c.getCaderas());
+                txtMusloDer.setText(""+c.getMusloDer());
+                txtMusloIzq.setText(""+c.getMusloIzq());
+                txtBrazoDer.setText(""+c.getBrazoDer());
+                txtBrazoIzq.setText(""+c.getBrazoIzq());
+                txtAnteDer.setText(""+c.getAntebrazoDer());
+                txtAnteIzq.setText(""+c.getAntebrazoIzq());
+                txtGastroDer.setText(""+c.getGastroDer());
+                txtGastroIzq.setText(""+c.getGastroIzq());
+                txtTriceps.setText(""+c.getTricepsPorG());
+                txtSubes.setText(""+c.getSubescapularPorG());
+                txtSupra.setText(""+c.getSupraPorG());
+                txtAbdominal.setText(""+c.getAbdominalPorG());
+                txtGastro.setText(""+c.getGastroPorG());
+                txtPechoH.setText(""+c.getPechoPorG());
+                txtPorcenGrasa.setText(""+c.getPorcentajeGrasa());
+                txtPorcenMasaMusc.setText(""+c.getPorcenMasaMuscPorG());
+                txtImc.setText(""+c.getImcPorG());
+                txtindVice.setText(""+c.getIndVicePorG());
+                txtKcal.setText(""+c.getCalReposoPorG());
+                txtPresion.setText(""+c.getPresionPorG());
+                txtPulso.setText(""+c.getPulsoPorG());
+                txtGlucosa.setText(""+c.getGlucosaPorG());
+                txtMusculo.setText(""+c.getMusculoPorG());
+                txtObservaciones.setText(c.getObservaciones());
+            }
 		} catch (Exception e) {
 			Toast.makeText(getApplicationContext(), R.string.err_unexp,
 					Toast.LENGTH_LONG).show();
@@ -140,8 +197,73 @@ public class ClienteActivity extends Activity {
 
 	// Button methods
 	public void guardar(View v) {
+        // edit
+        if (code == 1) {
+            Entrenador e = new Entrenador();
+            e.setCedula(cedulaEntrenador);
+
+            Calendar cl = new GregorianCalendar();
+            cl.set(Calendar.HOUR_OF_DAY, 0);
+            cl.set(Calendar.MINUTE, 0);
+            cl.set(Calendar.SECOND, 0);
+
+            int edad = Calendar.YEAR - anoNacimiento;
+
+            Date d = cl.getTime();
+
+            boolean sexo = true;
+            if (rbMasc.isSelected())
+                sexo = true;
+            else if (rbFem.isSelected())
+                sexo = false;
+            try {
+                Cliente c = new Cliente(Long.parseLong(txtCedula.getText()
+                        .toString()), e, txtApellido1.getText().toString(),
+                        txtApellido2.getText().toString(), txtNombre.getText()
+                        .toString(), d, fechaNacimiento, edad, sexo,
+                        Double.parseDouble(txtEstatura.getText().toString()),
+                        Double.parseDouble(txtPeso.getText().toString()),
+                        Double.parseDouble(txtPecho.getText().toString()),
+                        Double.parseDouble(txtEspalda.getText().toString()),
+                        Double.parseDouble(txtUmbilical.getText().toString()),
+                        Double.parseDouble(txtCaderas.getText().toString()),
+                        Double.parseDouble(txtMusloDer.getText().toString()),
+                        Double.parseDouble(txtMusloIzq.getText().toString()),
+                        Double.parseDouble(txtBrazoDer.getText().toString()),
+                        Double.parseDouble(txtBrazoIzq.getText().toString()),
+                        Double.parseDouble(txtAnteDer.getText().toString()),
+                        Double.parseDouble(txtAnteIzq.getText().toString()),
+                        Double.parseDouble(txtGastroDer.getText().toString()),
+                        Double.parseDouble(txtGastroIzq.getText().toString()),
+                        Double.parseDouble(txtTriceps.getText().toString()),
+                        Double.parseDouble(txtSubes.getText().toString()),
+                        Double.parseDouble(txtSupra.getText().toString()),
+                        Double.parseDouble(txtAbdominal.getText().toString()),
+                        Double.parseDouble(txtGastro.getText().toString()),
+                        Double.parseDouble(txtPechoH.getText().toString()),
+                        Double.parseDouble(txtPorcenGrasa.getText().toString()),
+                        Double.parseDouble(txtPorcenMasaMusc.getText().toString()),
+                        Double.parseDouble(txtImc.getText().toString()),
+                        Double.parseDouble(txtindVice.getText().toString()),
+                        Double.parseDouble(txtKcal.getText().toString()),
+                        Double.parseDouble(txtPresion.getText().toString()),
+                        Double.parseDouble(txtPulso.getText().toString()),
+                        Double.parseDouble(txtGlucosa.getText().toString()),
+                        Double.parseDouble(txtMusculo.getText().toString()),
+                        txtObservaciones.getText().toString());
+
+                String json = gson.toJson(c);
+                rc.execute(json, "2");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                Toast.makeText(getApplicationContext(), R.string.err_unexp,
+                        Toast.LENGTH_LONG).show();
+                finish();
+            }
+        }
+
 		Entrenador e = new Entrenador();
-		// e.setCedula(cedulaEntrenador);
+		e.setCedula(cedulaEntrenador);
 
 		Calendar cl = new GregorianCalendar();
 		cl.set(Calendar.HOUR_OF_DAY, 0);
@@ -339,7 +461,7 @@ public class ClienteActivity extends Activity {
 	private ArrayList<Entrenador> convertToEntrenador(JSONArray ja,
 			ArrayList<Entrenador> arr) throws JSONException {
 		for (int i = 0; i < ja.length(); i++) {
-			Entrenador c = gson.fromJson(ja.getString(1), Entrenador.class);
+			Entrenador c = gson.fromJson(ja.getString(i), Entrenador.class);
 			arr.add(c);
 		}
 		return arr;
@@ -355,126 +477,83 @@ public class ClienteActivity extends Activity {
 	}
 
 	private class RequestCliente extends AsyncTask<String, Void, String> {
-		private ClienteActivity activity;
+        private ClienteActivity activity;
 
-		public RequestCliente(ClienteActivity activity) {
-			this.activity = activity;
-		}
+        public RequestCliente(ClienteActivity activity) {
+            this.activity = activity;
+        }
 
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-			activity.startLoader();
-		}
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            activity.startLoader();
+        }
 
-		@Override
-		protected String doInBackground(String... params) {
-			switch (params[1]) {
-			case "1":
-				ACTION_CODE = 1;
-				return rh.POST(Constantes.GUARDAR_CLIENTE, params[0]);
-			case "2":
-				ACTION_CODE = 2;
-				return rh.PUT(Constantes.GUARDAR_CLIENTE, params[0]);
+        @Override
+        protected String doInBackground(String... params) {
+            switch (params[1]) {
+                case "1":
+                    ACTION_CODE = 1;
+                    return rh.POST(Constantes.GUARDAR_CLIENTE, params[0]);
+                case "2":
+                    ACTION_CODE = 2;
+                    return rh.PUT(Constantes.EDITAR_CLIENTE, params[0]);
 
-			case "3":
-				ACTION_CODE = 3;
-				return rh.GET(Constantes.MOSTRAR_TODOS_ENTRENADORES);
+                case "3":
+                    ACTION_CODE = 3;
+                    return rh.GET(Constantes.MOSTRAR_TODOS_ENTRENADORES);
 
-			default:
-				return "";
-			}
-		}
+                default:
+                    return "";
+            }
+        }
 
-		@Override
-		protected void onPostExecute(String response) {
-			activity.maskAsDone();
-			if (response.equals("")) {
-				switch (ACTION_CODE) {
-				// post clientes
-				case 1:
+        @Override
+        protected void onPostExecute(String response) {
+            activity.maskAsDone();
+                switch (ACTION_CODE) {
+                    // post clientes
+                    case 1:
 
-					break;
+                        break;
 
-				// put clientes
-				case 2:
+                    // put clientes
+                    case 2:
 
-					break;
+                        break;
 
-                // get entrenadores
-				case 3:
-                    ArrayList<Entrenador> arr = new ArrayList<Entrenador>();
-                    JSONArray ja = null;
-                    try {
-                        ja = new JSONArray(response);
-                        View header = (View) getLayoutInflater().inflate(R.layout.header, null);
-                        lsEntrenadoresC.addHeaderView(header, "", false);
-                        lsEntrenadoresC.setAdapter(new ListTrainersAdapter(getApplicationContext(), R.layout.entrenadores_row_layout, convertToEntrenador(ja, arr)));
+                    // get entrenadores
+                    case 3:
+                        if (response != null) {
+                        ArrayList<Entrenador> arr = new ArrayList<Entrenador>();
+                        JSONArray ja = null;
+                        try {
+                            ja = new JSONArray(response);
+                            View header = (View) getLayoutInflater().inflate(R.layout.header, null);
+                            lsEntrenadoresC.addHeaderView(header, "", false);
+                            lsEntrenadoresC.setAdapter(new ListTrainersAdapter(activity, R.layout.entrenadores_row_layout, convertToEntrenador(ja, arr)));
 
-                        lsEntrenadoresC.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                TextView cedula = (TextView) view.findViewById(R.id.lblCedulaEC);
-                                TextView nombre = (TextView) view.findViewById(R.id.lblNombreEC);
-                                TextView pApe = (TextView) view.findViewById(R.id.lblApe1EC);
-                                TextView sApe = (TextView) view.findViewById(R.id.lblApe2EC);
+                            lsEntrenadoresC.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    TextView tv = (TextView) view.findViewById(R.id.lblCedulaEC);
+                                    TextView nombre = (TextView) view.findViewById(R.id.lblNombreEC);
+                                    cedulaEntrenador = tv.getText().toString();
 
-                                lblCedulaE.setText(cedula.getText().toString());
-                                lblNombreE.setText(nombre.getText().toString());
-                                lblPrimerApellidoE.setText(pApe.getText().toString());
-                                lblSegundoApellidoE.setText(sApe.getText().toString());
-                            }
-                        });
+                                    Toast.makeText(getApplicationContext(), "Entrenador seleccionado: "+nombre.getText().toString(), Toast.LENGTH_LONG).show();
+                                }
+                            });
 
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-					break;
-				// error
-				default:
-					Toast.makeText(activity, R.string.err_unexp,
-							Toast.LENGTH_LONG).show();
-					finish();
-					break;
-				}
-			} else {
-				if (ACTION_CODE == 3) {
-					arr = new ArrayList<Entrenador>();
-					try {
-						JSONArray ja = new JSONArray(response);
-						convertToEntrenador(ja, arr);
-
-						ListTrainersAdapter adapter = new ListTrainersAdapter(
-								activity.getApplicationContext(),
-								R.layout.entrenadores_row_layout, arr);
-
-						lsEntrenadoresC = (ListView) findViewById(R.id.lsEntrenadoresC);
-						lsEntrenadoresC.setAdapter(adapter);
-						lsEntrenadoresC
-								.setOnItemClickListener(new OnItemClickListener() {
-									@Override
-									public void onItemClick(
-											AdapterView<?> parent, View view,
-											int position, long id) {
-										view.setSelected(true);
-										TextView lblCedulaEC = (TextView) findViewById(R.id.lblCedulaEC);
-										cedulaEntrenador = lblCedulaEC
-												.getText().toString();
-									}
-								});
-
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-					activity.maskAsDone();
-				} else {
-					Toast.makeText(activity,
-							"No hay entrenadores registrados...",
-							Toast.LENGTH_LONG).show();
-				}
-			}
-		}
-	}
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }}
+                        else {
+                            Toast.makeText(getApplicationContext(), "No hay entrenadores registrados aun...", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+            }
+        }
+    }
 
     //adapter para los entrenadores
     private class ListTrainersAdapter extends ArrayAdapter<Entrenador> {

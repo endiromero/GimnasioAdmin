@@ -15,10 +15,13 @@ public class EscogerAccionActivity extends Activity {
 	// Button methods
 	public void nuevoCliente(View v) {
 		Intent i = new Intent(this, ClienteActivity.class);
+        i.putExtra("code", 0);
 		startActivity(i);
 	}
 	
 	public void modificarCliente(View v) {
-		//Intent i = new Intent(this, ListClientesActivity.class);
+		Intent i = new Intent(this, ListClientesActivity.class);
+        i.putExtra("code", 1);
+        startActivity(i);
 	}
 }

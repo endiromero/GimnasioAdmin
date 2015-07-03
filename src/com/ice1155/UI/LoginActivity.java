@@ -9,7 +9,10 @@ import com.ice1155.UT.Constantes;
 import com.ice1155.UT.RequestHandler;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.InputFilter.LengthFilter;
@@ -32,12 +35,25 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        // Inicialización
-        init();
-        rh = new RequestHandler();
+        if(isNetworkConnected()) {
+            // Inicialización
+            init();
+            rh = new RequestHandler();
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Revise su conexión a internet...", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
     }
 
-    // Custom methods
+    private boolean isNetworkConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager
+                .getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
     private void init() {
         this.txtUser = (EditText) findViewById(R.id.txtUser);
         this.txtPwd = (EditText) findViewById(R.id.txtPwd);

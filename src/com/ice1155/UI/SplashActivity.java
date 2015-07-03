@@ -24,6 +24,7 @@ public class SplashActivity extends Activity {
 						LoginActivity.class);
 				SplashActivity.this.startActivity(miIntent);
 				SplashActivity.this.finish();
+                finish();
 			}
 		}, SPLASH_TIME);
 	}

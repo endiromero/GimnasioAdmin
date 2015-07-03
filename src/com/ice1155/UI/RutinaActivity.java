@@ -10,6 +10,7 @@ import com.ice1155.DA.ListaPorZona;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class RutinaActivity extends Activity {
@@ -17,18 +18,38 @@ public class RutinaActivity extends Activity {
 	private ArrayList<Item> items = new ArrayList<Item>();
 	private ListaPorZona lpz;
 
+    // dia selector
+    private boolean diaUno = false;
+    private boolean diaDos = false;
+    private boolean diaTres = false;
+    private boolean diaCuatro = false;
+
+    // visual components
+    private Button btnUno;
+    private Button btnDos;
+    private Button btnTres;
+    private Button btnCuatro;
+
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.rutinas);
-		
-		prepareListData(items);
-		// Init data
-		expListView = (ListView) findViewById(R.id.elv);
-				
-		// Set headers and data
-		EntryAdapter adapter = new EntryAdapter(this, items);
-		expListView.setAdapter(adapter);
-		
+
+        try {
+
+            prepareListData(items);
+            // Init data
+            expListView = (ListView) findViewById(R.id.elv);
+            btnUno = (Button) findViewById(R.id.btnDia1);
+            btnDos = (Button) findViewById(R.id.btnDia2);
+            btnTres = (Button) findViewById(R.id.btnDia3);
+            btnCuatro = (Button) findViewById(R.id.btnDia4);
+
+            // Set headers and data
+            EntryAdapter adapter = new EntryAdapter(this, items);
+            expListView.setAdapter(adapter);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 	}
 
 	// Custom methods
@@ -101,7 +122,69 @@ public class RutinaActivity extends Activity {
 	
 	// Button methods
 	public void agregarEjercicio(View v) {
-		
+		if (diaUno) {
+
+        }
+        else if(diaDos) {
+
+        }
+        else if (diaTres) {
+
+        }
+        else {
+
+        }
 	}
-	
+
+    public void diaUno(View v) {
+        diaUno = true;
+        diaDos = false;
+        diaTres = false;
+        diaCuatro = false;
+
+        //cambiar icono
+        btnUno.setBackgroundResource(R.drawable.boton_dia_1_2);
+        btnDos.setBackgroundResource(R.drawable.boton_dia_2);
+        btnTres.setBackgroundResource(R.drawable.boton_dia_3);
+        btnCuatro.setBackgroundResource(R.drawable.boton_dia_4);
+    }
+
+    public void diaDos(View v) {
+        diaUno = false;
+        diaDos = true;
+        diaTres = false;
+        diaCuatro = false;
+
+        //cambiar icono
+        btnUno.setBackgroundResource(R.drawable.boton_dia_1);
+        btnDos.setBackgroundResource(R.drawable.boton_dia_2_2);
+        btnTres.setBackgroundResource(R.drawable.boton_dia_3);
+        btnCuatro.setBackgroundResource(R.drawable.boton_dia_4);
+    }
+
+    public void diaTres(View v) {
+        diaUno = false;
+        diaDos = false;
+        diaTres = true;
+        diaCuatro = false;
+
+        //cambiar icono
+        btnUno.setBackgroundResource(R.drawable.boton_dia_1);
+        btnDos.setBackgroundResource(R.drawable.boton_dia_2);
+        btnTres.setBackgroundResource(R.drawable.boton_dia_3_2);
+        btnCuatro.setBackgroundResource(R.drawable.boton_dia_4);
+    }
+
+    public void diaCuatro(View v) {
+        diaUno = false;
+        diaDos = false;
+        diaTres = false;
+        diaCuatro = true;
+
+        //cambiar icono
+        btnUno.setBackgroundResource(R.drawable.boton_dia_1);
+        btnDos.setBackgroundResource(R.drawable.boton_dia_2);
+        btnTres.setBackgroundResource(R.drawable.boton_dia_3);
+        btnCuatro.setBackgroundResource(R.drawable.boton_dia_4_2);
+    }
 }
