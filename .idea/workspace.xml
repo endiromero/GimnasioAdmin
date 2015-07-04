@@ -77,33 +77,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ClienteActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/ice1155/UI/ClienteActivity.java">
+      <file leaf-file-name="RutinaActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/ice1155/UI/RutinaActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.5085158">
-              <caret line="320" column="0" selection-start-line="320" selection-start-column="0" selection-end-line="320" selection-end-column="0" />
-              <folding>
-                <element signature="e#19929#19941#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ice1155/UT/RequestHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Constantes.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ice1155/UT/Constantes.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="70" selection-start-line="30" selection-start-column="70" selection-end-line="30" selection-end-column="70" />
+            <state vertical-scroll-proportion="0.5985401">
+              <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -807,7 +785,6 @@
         <option value="$PROJECT_DIR$/res/layout-large/clientes_list.xml" />
         <option value="$PROJECT_DIR$/src/com/ice1155/BL/ListClientesAdapter.java" />
         <option value="$PROJECT_DIR$/res/layout-large/clientes_row_layout.xml" />
-        <option value="$PROJECT_DIR$/src/com/ice1155/UI/RutinaActivity.java" />
         <option value="$PROJECT_DIR$/res/layout-large/rutinas.xml" />
         <option value="$PROJECT_DIR$/src/com/ice1155/UI/EscogerAccionActivity.java" />
         <option value="$PROJECT_DIR$/src/com/ice1155/UI/ListClientesActivity.java" />
@@ -816,9 +793,10 @@
         <option value="$PROJECT_DIR$/src/com/ice1155/UI/EntrenadorActivity.java" />
         <option value="$PROJECT_DIR$/src/com/ice1155/UI/SplashActivity.java" />
         <option value="$PROJECT_DIR$/src/com/ice1155/UI/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/ice1155/UI/ClienteActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/ice1155/UT/RequestHandler.java" />
         <option value="$PROJECT_DIR$/src/com/ice1155/UT/Constantes.java" />
+        <option value="$PROJECT_DIR$/src/com/ice1155/UT/RequestHandler.java" />
+        <option value="$PROJECT_DIR$/src/com/ice1155/UI/ClienteActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/ice1155/UI/RutinaActivity.java" />
       </list>
     </option>
   </component>
@@ -1099,7 +1077,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="recentsLimit" value="5" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="C4F12300860926E" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="T01130LHWQ" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Tablet2" />
     <property name="FullScreen" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
@@ -1368,23 +1346,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/ice1155/UI/ClienteActivity.java</url>
-          <line>200</line>
+          <line>201</line>
           <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/ice1155/UI/ClienteActivity.java</url>
+          <line>359</line>
+          <properties />
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="24" />
+      <option name="time" value="26" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/ice1155/DA/Entrenador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ice1155/UT/RequestHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1686,13 +1663,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ice1155/UI/RutinaActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ice1155/UI/EscogerAccionActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1924,17 +1894,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ice1155/UI/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3649635">
-          <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
-          <folding>
-            <element signature="e#2728#2729#0" expanded="true" />
-            <element signature="e#2776#2777#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout-large/entrenadores_row_layout.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.67264575">
@@ -1954,21 +1913,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ice1155/UT/RequestHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ice1155/UI/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+          <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34378922">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ice1155/UI/ClienteActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5085158">
-          <caret line="320" column="0" selection-start-line="320" selection-start-column="0" selection-end-line="320" selection-end-column="0" />
+        <state vertical-scroll-proportion="10.419708">
+          <caret line="613" column="114" selection-start-line="613" selection-start-column="114" selection-end-line="613" selection-end-column="114" />
           <folding>
-            <element signature="e#19929#19941#0" expanded="true" />
+            <element signature="e#6493#6511#0" expanded="true" />
+            <element signature="e#12563#12581#0" expanded="true" />
+            <element signature="e#17579#17597#0" expanded="true" />
+            <element signature="e#24718#24736#0" expanded="true" />
+            <element signature="e#25302#25320#0" expanded="true" />
+            <element signature="e#25829#25841#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ice1155/UT/RequestHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19464721">
+          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ice1155/UI/RutinaActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5985401">
+          <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

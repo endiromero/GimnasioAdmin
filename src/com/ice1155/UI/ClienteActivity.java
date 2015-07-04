@@ -8,6 +8,7 @@ import java.util.GregorianCalendar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import com.google.gson.Gson;
@@ -207,7 +208,7 @@ public class ClienteActivity extends Activity {
             cl.set(Calendar.MINUTE, 0);
             cl.set(Calendar.SECOND, 0);
 
-            int edad = Calendar.YEAR - anoNacimiento;
+            int edad = Calendar.getInstance().get(Calendar.YEAR) - anoNacimiento;
 
             Date d = cl.getTime();
 
@@ -252,8 +253,47 @@ public class ClienteActivity extends Activity {
                         Double.parseDouble(txtMusculo.getText().toString()),
                         txtObservaciones.getText().toString());
 
-                String json = gson.toJson(c);
-                rc.execute(json, "2");
+                JSONObject json = new JSONObject();
+                json.accumulate("segundoApellido", c.getsegundo_apellido());
+                json.accumulate("primerApellido", c.getprimer_apellido());
+                json.accumulate("observaciones", c.getObservaciones());
+                json.accumulate("nombre", c.getNombre());
+                json.accumulate("fechaNacimiento", c.getFechaNacimiento());
+                json.accumulate("fechaMedicion", d);
+                json.accumulate("entrenador", e);
+                json.accumulate("sexo" ,c.isSexo());
+                json.accumulate("umbilical", c.getUmbilical());
+                json.accumulate("calReposoPorG",c.getCalReposoPorG());
+                json.accumulate("espalda",c.getEspalda());
+                json.accumulate("estatura", c.getEstatura());
+                json.accumulate("caderas", c.getCaderas());
+                json.accumulate("brazoIzq", c.getBrazoIzq());
+                json.accumulate("gastroIzq", c.getGastroIzq());
+                json.accumulate("gastroPorG", c.getGastroPorG());
+                json.accumulate("glucosaPorG", c.getGlucosaPorG());
+                json.accumulate("imcPorG", c.getImcPorG());
+                json.accumulate("indVicePorG", c.getIndVicePorG());
+                json.accumulate("musculoPorG", c.getMusculoPorG());
+                json.accumulate("musloDer", c.getMusloDer());
+                json.accumulate("musloIzq", c.getMusloIzq());
+                json.accumulate("brazoDer", c.getBrazoDer());
+                json.accumulate("antebrazoIzq", c.getAntebrazoIzq());
+                json.accumulate("pecho", c.getPecho());
+                json.accumulate("pechoPorG", c.getPechoPorG());
+                json.accumulate("pesoKgs", c.getPesoKgs());
+                json.accumulate("porcenMasaMuscPorG", c.getPorcenMasaMuscPorG());
+                json.accumulate("porcentajeGrasa", c.getPorcentajeGrasa());
+                json.accumulate("presionPorG", c.getPresionPorG());
+                json.accumulate("antebrazoDer", c.getAntebrazoDer());
+                json.accumulate("pulsoPorG", c.getPulsoPorG());
+                json.accumulate("abdominalPorG", c.getAbdominalPorG());
+                json.accumulate("carne", c.getCarne());
+                json.accumulate("subescapularPorG", c.getSubescapularPorG());
+                json.accumulate("supraPorG", c.getSupraPorG());
+                json.accumulate("tricepsPorG", c.getTricepsPorG());
+                json.accumulate("edad", c.getEdad());
+
+                rc.execute(json.toString(), "2");
             } catch (Exception ex) {
                 ex.printStackTrace();
                 Toast.makeText(getApplicationContext(), R.string.err_unexp,
@@ -270,7 +310,7 @@ public class ClienteActivity extends Activity {
 		cl.set(Calendar.MINUTE, 0);
 		cl.set(Calendar.SECOND, 0);
 
-		int edad = Calendar.YEAR - anoNacimiento;
+		int edad = Calendar.getInstance().get(Calendar.YEAR) - anoNacimiento;
 
 		Date d = cl.getTime();
 
@@ -315,8 +355,48 @@ public class ClienteActivity extends Activity {
 					Double.parseDouble(txtMusculo.getText().toString()),
 					txtObservaciones.getText().toString());
 
-			String json = gson.toJson(c);
-			rc.execute(json, "1");
+
+            JSONObject json = new JSONObject();
+            json.accumulate("segundoApellido", c.getsegundo_apellido());
+            json.accumulate("primerApellido", c.getprimer_apellido());
+            json.accumulate("observaciones", c.getObservaciones());
+            json.accumulate("nombre", c.getNombre());
+            json.accumulate("fechaNacimiento", c.getFechaNacimiento());
+            json.accumulate("fechaMedicion", d);
+            json.accumulate("entrenador", e);
+            json.accumulate("sexo" ,c.isSexo());
+            json.accumulate("umbilical", c.getUmbilical());
+            json.accumulate("calReposoPorG",c.getCalReposoPorG());
+            json.accumulate("espalda",c.getEspalda());
+            json.accumulate("estatura", c.getEstatura());
+            json.accumulate("caderas", c.getCaderas());
+            json.accumulate("brazoIzq", c.getBrazoIzq());
+            json.accumulate("gastroIzq", c.getGastroIzq());
+            json.accumulate("gastroPorG", c.getGastroPorG());
+            json.accumulate("glucosaPorG", c.getGlucosaPorG());
+            json.accumulate("imcPorG", c.getImcPorG());
+            json.accumulate("indVicePorG", c.getIndVicePorG());
+            json.accumulate("musculoPorG", c.getMusculoPorG());
+            json.accumulate("musloDer", c.getMusloDer());
+            json.accumulate("musloIzq", c.getMusloIzq());
+            json.accumulate("brazoDer", c.getBrazoDer());
+            json.accumulate("antebrazoIzq", c.getAntebrazoIzq());
+            json.accumulate("pecho", c.getPecho());
+            json.accumulate("pechoPorG", c.getPechoPorG());
+            json.accumulate("pesoKgs", c.getPesoKgs());
+            json.accumulate("porcenMasaMuscPorG", c.getPorcenMasaMuscPorG());
+            json.accumulate("porcentajeGrasa", c.getPorcentajeGrasa());
+            json.accumulate("presionPorG", c.getPresionPorG());
+            json.accumulate("antebrazoDer", c.getAntebrazoDer());
+            json.accumulate("pulsoPorG", c.getPulsoPorG());
+            json.accumulate("abdominalPorG", c.getAbdominalPorG());
+            json.accumulate("carne", c.getCarne());
+            json.accumulate("subescapularPorG", c.getSubescapularPorG());
+            json.accumulate("supraPorG", c.getSupraPorG());
+            json.accumulate("tricepsPorG", c.getTricepsPorG());
+            json.accumulate("edad", c.getEdad());
+
+			rc.execute(json.toString(), "1");
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			Toast.makeText(getApplicationContext(), R.string.err_unexp,
@@ -514,12 +594,26 @@ public class ClienteActivity extends Activity {
                 switch (ACTION_CODE) {
                     // post clientes
                     case 1:
-
+                        if (response != null ){
+                            if(response.equals("")) {
+                                Toast.makeText(getApplicationContext(), R.string.err_unexp, Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(), "Éxito! Cliente creado satisfactoriamente!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
                         break;
 
                     // put clientes
                     case 2:
-
+                        if (response != null ){
+                            if(response.equals("")) {
+                                Toast.makeText(getApplicationContext(), R.string.err_unexp, Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(), "Éxito! Cliente editado satisfactoriamente", Toast.LENGTH_SHORT).show();
+                            }
+                        }
                         break;
 
                     // get entrenadores
