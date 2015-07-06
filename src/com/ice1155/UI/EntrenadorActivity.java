@@ -211,7 +211,12 @@ public class EntrenadorActivity extends Activity {
                     case 1:
                         markAsDone();
                         //loadTrainers();
-                        Toast.makeText(getApplicationContext(), "Entrenador creado con éxito!", Toast.LENGTH_SHORT).show();
+                        if (response.equals(""))
+                            Toast.makeText(getApplicationContext(), "Entrenador creado con éxito!", Toast.LENGTH_SHORT).show();
+
+                        else
+                            Toast.makeText(getApplicationContext(), "Error creando el entrenador. Reintente!", Toast.LENGTH_SHORT).show();
+
                         break;
 
                     //get
@@ -242,7 +247,6 @@ public class EntrenadorActivity extends Activity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-
                         break;
 
                     //put

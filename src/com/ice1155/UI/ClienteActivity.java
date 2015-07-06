@@ -372,6 +372,7 @@ public class ClienteActivity extends Activity {
             json.accumulate("caderas", c.getCaderas());
             json.accumulate("brazoIzq", c.getBrazoIzq());
             json.accumulate("gastroIzq", c.getGastroIzq());
+            json.accumulate("gastroDer", c.getGastroDer());
             json.accumulate("gastroPorG", c.getGastroPorG());
             json.accumulate("glucosaPorG", c.getGlucosaPorG());
             json.accumulate("imcPorG", c.getImcPorG());
@@ -379,6 +380,7 @@ public class ClienteActivity extends Activity {
             json.accumulate("musculoPorG", c.getMusculoPorG());
             json.accumulate("musloDer", c.getMusloDer());
             json.accumulate("musloIzq", c.getMusloIzq());
+            json.accumulate("muslosPorG", 0.0);
             json.accumulate("brazoDer", c.getBrazoDer());
             json.accumulate("antebrazoIzq", c.getAntebrazoIzq());
             json.accumulate("pecho", c.getPecho());
@@ -403,10 +405,6 @@ public class ClienteActivity extends Activity {
 					Toast.LENGTH_LONG).show();
 			finish();
 		}
-	}
-
-	public void modificar(View v) {
-
 	}
 
 	public void mostrarDatosPersonales(View v) {

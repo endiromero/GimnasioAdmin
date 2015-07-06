@@ -110,7 +110,6 @@ public class RequestHandler {
 			return null;
 
 		} finally {
-
 			if (connection != null) {
 				connection.disconnect();
 			}
