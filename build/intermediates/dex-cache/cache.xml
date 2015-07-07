@@ -9,13 +9,6 @@
         <dex dex="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/build/intermediates/pre-dexed/debug/commons-codec-1.10-ed0ff4dd7b6e30e9be7b74e7b632a25b4efb8fe8.jar" />
     </item>
     <item
-        jar="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/libs/spring-android-rest-template-1.0.1.RELEASE.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="e132d929bd181941f79b0d63edafb8a86ae6fd33">
-        <dex dex="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/build/intermediates/pre-dexed/debug/spring-android-rest-template-1.0.1.RELEASE-8e791fbbd2399616ca56a0b4c6ac9c0b81a2b013.jar" />
-    </item>
-    <item
         jar="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/libs/gson-2.2.4.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -23,18 +16,18 @@
         <dex dex="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/build/intermediates/pre-dexed/debug/gson-2.2.4-9d9e8059baeb1217e696dc2805d99662e63ee454.jar" />
     </item>
     <item
+        jar="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/libs/joda-time-2.8.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f5bfc718c95a7b1d3c371bb02a188a4df18361a9">
+        <dex dex="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/build/intermediates/pre-dexed/debug/joda-time-2.8.1-7a8fba2337a4d97de2d3bfa54a28c54f50f6d541.jar" />
+    </item>
+    <item
         jar="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/libs/android-support-v4.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="3e4e879d0b3dc11f2feb3f55e77e3b5bd82c4a28">
         <dex dex="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/build/intermediates/pre-dexed/debug/android-support-v4-3d5b881fa2cc76982de090780b95e91024e81796.jar" />
-    </item>
-    <item
-        jar="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/libs/spring-android-core-1.0.1.RELEASE.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="e68f0e8e4b636ee30c4de58953be38d9b72a5e3b">
-        <dex dex="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/build/intermediates/pre-dexed/debug/spring-android-core-1.0.1.RELEASE-220dcc9542b0e976880b141c970d5fac6b421753.jar" />
     </item>
 
 </items>

@@ -13,6 +13,12 @@ dependencies {
 }
 
 android {
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
 

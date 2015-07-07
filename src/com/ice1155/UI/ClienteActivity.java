@@ -1,11 +1,16 @@
 package com.ice1155.UI;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -206,11 +211,15 @@ public class ClienteActivity extends Activity {
             Calendar cl = new GregorianCalendar();
             cl.set(Calendar.HOUR_OF_DAY, 0);
             cl.set(Calendar.MINUTE, 0);
-            cl.set(Calendar.SECOND, 0);
 
             int edad = Calendar.getInstance().get(Calendar.YEAR) - anoNacimiento;
 
             Date d = cl.getTime();
+
+            String fechaMed = String.valueOf(d);
+
+            DateTimeFormatter dtf = DateTimeFormat.forPattern("YYYY-mm-dd HH:mm:ss");
+            DateTime dateTime = dtf.parseDateTime(fechaMed);
 
             boolean sexo = true;
             if (rbMasc.isSelected())
@@ -313,6 +322,9 @@ public class ClienteActivity extends Activity {
 		int edad = Calendar.getInstance().get(Calendar.YEAR) - anoNacimiento;
 
 		Date d = cl.getTime();
+
+        DateFormat df = new SimpleDateFormat("YYYY-mm-ddTHH:mm:ssZ");
+        String date = df.format(d);
 
 		boolean sexo = true;
 		if (rbMasc.isSelected())

@@ -149,16 +149,4 @@
         android:background="@drawable/boton_verde_3"
         android:text="@string/btnAgregarEjercicio" />
 
-    <Button
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:text="Crear rutina"
-        android:textColor="#ffffff"
-        android:background="@drawable/boton_entrar"
-        android:id="@+id/btnCrearRutina"
-        android:layout_marginRight="30dp"
-        android:layout_alignBottom="@+id/btnAgregarEjercicio"
-        android:layout_alignRight="@+id/lsRutina"
-        android:layout_alignEnd="@+id/lsRutina" />
-
 </RelativeLayout><!-- From: file:/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/res/layout-large/rutinas.xml -->

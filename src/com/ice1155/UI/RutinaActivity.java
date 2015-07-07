@@ -1,6 +1,7 @@
 package com.ice1155.UI;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.ice1155.BL.EntryAdapter;
 import com.ice1155.BL.EntryItem;
@@ -12,11 +13,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class RutinaActivity extends Activity {
 	private ListView expListView;
+    private ListView lsRutina;
 	private ArrayList<Item> items = new ArrayList<Item>();
 	private ListaPorZona lpz;
+    private ArrayList<Item> ejercicios = new ArrayList<Item>();
 
     // dia selector
     private boolean diaUno = false;
@@ -35,9 +39,12 @@ public class RutinaActivity extends Activity {
 		setContentView(R.layout.rutinas);
 
         try {
-
+            // renderizar las listas
+            refreshEjercicios(ejercicios);
             prepareListData(items);
+
             // Init data
+            lsRutina = (ListView) findViewById(R.id.lsRutina);
             expListView = (ListView) findViewById(R.id.elv);
             btnUno = (Button) findViewById(R.id.btnDia1);
             btnDos = (Button) findViewById(R.id.btnDia2);
@@ -47,12 +54,22 @@ public class RutinaActivity extends Activity {
             // Set headers and data
             EntryAdapter adapter = new EntryAdapter(this, items);
             expListView.setAdapter(adapter);
+
+            EntryAdapter ea = new EntryAdapter(this, ejercicios);
+            lsRutina.setAdapter(ea);
         } catch (Exception e) {
             e.printStackTrace();
         }
 	}
 
 	// Custom methods
+    private void refreshEjercicios(ArrayList<Item> items) {
+        items.add(new SectionItem("Día 1"));
+        items.add(new SectionItem("Día 2"));
+        items.add(new SectionItem("Día 3"));
+        items.add(new SectionItem("Día 4"));
+    }
+
 	private void prepareListData(ArrayList<Item> items) {
 		lpz = new ListaPorZona();
 

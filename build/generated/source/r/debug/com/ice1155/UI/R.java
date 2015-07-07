@@ -221,7 +221,6 @@ public final class R {
         public static final int btnBorrarEjercicio=0x7f070082;
         public static final int btnCliente=0x7f07007a;
         public static final int btnCrearE=0x7f07005c;
-        public static final int btnCrearRutina=0x7f070091;
         public static final int btnDatosPersonales=0x7f070004;
         public static final int btnDeltoides=0x7f070046;
         public static final int btnDia1=0x7f07008c;
