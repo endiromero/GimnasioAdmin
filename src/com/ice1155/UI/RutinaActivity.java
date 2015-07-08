@@ -9,8 +9,12 @@ import com.ice1155.BL.Item;
 import com.ice1155.BL.SectionItem;
 import com.ice1155.DA.ListaPorZona;
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -204,4 +208,44 @@ public class RutinaActivity extends Activity {
         btnTres.setBackgroundResource(R.drawable.boton_dia_3);
         btnCuatro.setBackgroundResource(R.drawable.boton_dia_4_2);
     }
+
+    // adapter para 4 arrays
+    private class QuadAdapter extends BaseAdapter {
+        private ArrayList<EntryItem> dia1, dia2, dia3, dia4;
+        private LayoutInflater inflater;
+
+        public QuadAdapter(Context context, ArrayList<EntryItem> dia1, ArrayList<EntryItem> dia2, ArrayList<EntryItem> dia3, ArrayList<EntryItem> dia4) {
+            this.dia1 = dia1;
+            this.dia2 = dia2;
+            this.dia3 = dia3;
+            this.dia4 = dia4;
+            inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        }
+
+        @Override
+        public int getCount() {
+            return 0;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View currentView = convertView;
+
+            if (currentView == null) {
+                currentView = inflater.inflate(R.layout.row_layout, parent, false);
+            }
+            return currentView;
+        }
+    }
+
 }

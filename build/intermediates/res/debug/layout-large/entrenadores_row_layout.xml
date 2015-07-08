@@ -43,4 +43,4 @@
             android:text="apellido 2"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </TableRow>
-</TableLayout><!-- From: file:/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/res/layout-large/entrenadores_row_layout.xml -->
+</TableLayout><!-- From: file:/home/pamobo0609/AndroidStudioProjects/GimnasioAdmin/res/layout-large/entrenadores_row_layout.xml -->

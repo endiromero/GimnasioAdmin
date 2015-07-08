@@ -149,4 +149,4 @@
         android:background="@drawable/boton_verde_3"
         android:text="@string/btnAgregarEjercicio" />
 
-</RelativeLayout><!-- From: file:/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/res/layout-large/rutinas.xml -->
+</RelativeLayout><!-- From: file:/home/pamobo0609/AndroidStudioProjects/GimnasioAdmin/res/layout-large/rutinas.xml -->
