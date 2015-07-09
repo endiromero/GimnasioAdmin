@@ -108,7 +108,7 @@
     <string name="lblBorrarE">Eliminar ejercicio</string>
     <string name="lblDataRut">Datos básicos de la rutina</string>
     <string name="txtObjetivo">Objetivo...</string>
-    <string name="txtObservaciones">Observaciones...</string>
+    <string name="txtObservaciones">Descripción del ejercicio...</string>
     <string name="btnDia1">Día 1</string>
     <string name="btnDia2">Día 2</string>
     <string name="btnDia3">Día 3</string>

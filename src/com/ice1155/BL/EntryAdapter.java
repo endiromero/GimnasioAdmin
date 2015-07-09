@@ -48,12 +48,16 @@ public class EntryAdapter extends ArrayAdapter<Item> {
 				v = vi.inflate(R.layout.list_item_entry, null);
 				final TextView title = (TextView) v
 						.findViewById(R.id.list_item_entry_title);
+                //final TextView subt = (TextView) v
+                  //      .findViewById(R.id.list_item_section_text);
 
 				if (title != null)
 					title.setText(ei.title);
+
+                //if (subt != null)
+                    //subt.setText(ei.subtitle);
 			}
 		}
 		return v;
 	}
-
 }

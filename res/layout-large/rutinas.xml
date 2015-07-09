@@ -42,7 +42,7 @@
             </EditText>
 
             <EditText
-                android:id="@+id/txtObservaciones"
+                android:id="@+id/txtRepeticiones"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -144,9 +144,34 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/elv"
         android:onClick="agregarEjercicio"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:background="@drawable/boton_verde_3"
         android:text="@string/btnAgregarEjercicio" />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Crear rutina"
+        android:id="@+id/btnCrearRutina"
+        android:onClick="crearRutina"
+        android:background="@drawable/boton_entrar"
+        android:layout_alignBottom="@+id/lblCopy"
+        android:layout_alignRight="@+id/lsRutina"
+        android:layout_alignEnd="@+id/lsRutina"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Agregue un ejercicio a la rutina..."
+        android:id="@+id/lblNoRutina"
+        android:gravity="center"
+        android:layout_alignRight="@+id/btnCrearRutina"
+        android:layout_alignEnd="@+id/btnCrearRutina"
+        android:layout_alignTop="@+id/lsRutina"
+        android:layout_alignBottom="@+id/lsRutina"
+        android:layout_alignLeft="@+id/lsRutina"
+        android:layout_alignStart="@+id/lsRutina"/>
 
 </RelativeLayout>

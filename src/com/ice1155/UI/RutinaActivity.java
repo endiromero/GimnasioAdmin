@@ -14,9 +14,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class RutinaActivity extends Activity {
@@ -32,11 +35,23 @@ public class RutinaActivity extends Activity {
     private boolean diaTres = false;
     private boolean diaCuatro = false;
 
+    // dias
+    private ArrayList<EntryItem> dia1 = new ArrayList<EntryItem>();
+    private ArrayList<EntryItem> dia2 = new ArrayList<EntryItem>();
+    private ArrayList<EntryItem> dia3 = new ArrayList<EntryItem>();
+    private ArrayList<EntryItem> dia4 = new ArrayList<EntryItem>();
+    private String ejercicio = "";
+    private String descripcion = "";
+
     // visual components
     private Button btnUno;
     private Button btnDos;
     private Button btnTres;
     private Button btnCuatro;
+    // common routine data
+    private EditText txtObjetivo;
+    private EditText txtRepeticiones;
+    private TextView lblNoRutina;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,7 +59,6 @@ public class RutinaActivity extends Activity {
 
         try {
             // renderizar las listas
-            refreshEjercicios(ejercicios);
             prepareListData(items);
 
             // Init data
@@ -54,30 +68,63 @@ public class RutinaActivity extends Activity {
             btnDos = (Button) findViewById(R.id.btnDia2);
             btnTres = (Button) findViewById(R.id.btnDia3);
             btnCuatro = (Button) findViewById(R.id.btnDia4);
+            txtObjetivo = (EditText) findViewById(R.id.txtObjetivo);
+            txtRepeticiones = (EditText) findViewById(R.id.txtRepeticiones);
+            lblNoRutina = (TextView) findViewById(R.id.lblNoRutina);
 
             // Set headers and data
             EntryAdapter adapter = new EntryAdapter(this, items);
             expListView.setAdapter(adapter);
+            expListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    if (!diaUno && !diaDos && !diaTres && !diaCuatro)
+                        Toast.makeText(getApplicationContext(), "Seleccione un día", Toast.LENGTH_SHORT).show();
 
-            EntryAdapter ea = new EntryAdapter(this, ejercicios);
-            lsRutina.setAdapter(ea);
+                    else {
+                        TextView tv = (TextView) view.findViewById(R.id.list_item_entry_title);
+                        ejercicio = tv.getText().toString();
+                    }
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
 	}
 
 	// Custom methods
-    private void refreshEjercicios(ArrayList<Item> items) {
-        items.add(new SectionItem("Día 1"));
-        items.add(new SectionItem("Día 2"));
-        items.add(new SectionItem("Día 3"));
-        items.add(new SectionItem("Día 4"));
+    private void refreshEjercicios (ArrayList<EntryItem> dia1, ArrayList<EntryItem> dia2, ArrayList<EntryItem> dia3,
+                                    ArrayList<EntryItem> dia4) {
+        //lsRutina.setAdapter(null);
+
+        ejercicios.add(new SectionItem("Día 1"));
+        for (int i = 0; i < dia1.size(); i++) {
+            ejercicios.add(dia1.get(i));
+        }
+
+        ejercicios.add(new SectionItem("Día 2"));
+        for (int i = 0; i < dia2.size(); i++) {
+            ejercicios.add(dia2.get(i));
+        }
+
+        ejercicios.add(new SectionItem("Día 3"));
+        for (int i = 0; i < dia3.size(); i++) {
+            ejercicios.add(dia3.get(i));
+        }
+
+        ejercicios.add(new SectionItem("Día 4"));
+        for (int i = 0; i < dia4.size(); i++) {
+            ejercicios.add(dia4.get(i));
+        }
+
+        EntryAdapter ea = new EntryAdapter(this, ejercicios);
+        lsRutina.setAdapter(ea);
     }
 
 	private void prepareListData(ArrayList<Item> items) {
 		lpz = new ListaPorZona();
 
-		items.add(new SectionItem("ABDOMEN"));		
+		items.add(new SectionItem("ABDOMEN"));
 		for (int i = 0; i < lpz.getListAbdomen().length; i++) {
 			String name = lpz.getListAbdomen()[i].getItemId() + ". "
 					+ lpz.getListAbdomen()[i].getItemName();
@@ -143,19 +190,67 @@ public class RutinaActivity extends Activity {
 	
 	// Button methods
 	public void agregarEjercicio(View v) {
-		if (diaUno) {
+        if (!diaUno && !diaDos && !diaTres && !diaCuatro)
+            Toast.makeText(getApplicationContext(), "Seleccione un día", Toast.LENGTH_SHORT).show();
 
+        else {
+            lblNoRutina.setVisibility(View.INVISIBLE);
+            /*if (dia1 != null || dia2 != null || dia3 != null || dia4 != null) {
+                dia1 = new ArrayList<String>();
+                dia2 = new ArrayList<String>();
+                dia3 = new ArrayList<String>();
+                dia4 = new ArrayList<String>();
+            }*/
+
+            if (diaUno) {
+                if(!txtRepeticiones.getText().toString().equals("")) {
+                    dia1.add(new EntryItem(ejercicio, descripcion));
+                    refreshEjercicios(dia1, dia2, dia3, dia4);
+                }
+                else
+                    Toast.makeText(getApplicationContext(), "La descripción o repeticiones son obligatorias",
+                            Toast.LENGTH_SHORT).show();
+
+
+            } else if (diaDos) {
+                if(!txtRepeticiones.getText().toString().equals("")) {
+                    dia1.add(new EntryItem(ejercicio, descripcion));
+                    refreshEjercicios(dia1, dia2, dia3, dia4);
+                }
+                else
+                    Toast.makeText(getApplicationContext(), "La descripción o repeticiones son obligatorias",
+                            Toast.LENGTH_SHORT).show();
+
+            } else if (diaTres) {
+                if(!txtRepeticiones.getText().toString().equals("")) {
+                    dia1.add(new EntryItem(ejercicio, descripcion));
+                    refreshEjercicios(dia1, dia2, dia3, dia4);
+                }
+                else
+                    Toast.makeText(getApplicationContext(), "La descripción o repeticiones son obligatorias",
+                            Toast.LENGTH_SHORT).show();
+
+            } else {
+                if(!txtRepeticiones.getText().toString().equals("")) {
+                    dia1.add(new EntryItem(ejercicio, descripcion));
+                    refreshEjercicios(dia1, dia2, dia3, dia4);
+                }
+                else
+                    Toast.makeText(getApplicationContext(), "La descripción o repeticiones son obligatorias",
+                            Toast.LENGTH_SHORT).show();
+            }
         }
-        else if(diaDos) {
+	}
 
-        }
-        else if (diaTres) {
-
+    public void crearRutina(View v) {
+        if (txtObjetivo.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "El objetivo es necesario para crear la rutina",
+                    Toast.LENGTH_SHORT).show();
         }
         else {
 
         }
-	}
+    }
 
     public void diaUno(View v) {
         diaUno = true;
@@ -208,44 +303,4 @@ public class RutinaActivity extends Activity {
         btnTres.setBackgroundResource(R.drawable.boton_dia_3);
         btnCuatro.setBackgroundResource(R.drawable.boton_dia_4_2);
     }
-
-    // adapter para 4 arrays
-    private class QuadAdapter extends BaseAdapter {
-        private ArrayList<EntryItem> dia1, dia2, dia3, dia4;
-        private LayoutInflater inflater;
-
-        public QuadAdapter(Context context, ArrayList<EntryItem> dia1, ArrayList<EntryItem> dia2, ArrayList<EntryItem> dia3, ArrayList<EntryItem> dia4) {
-            this.dia1 = dia1;
-            this.dia2 = dia2;
-            this.dia3 = dia3;
-            this.dia4 = dia4;
-            inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        }
-
-        @Override
-        public int getCount() {
-            return 0;
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            View currentView = convertView;
-
-            if (currentView == null) {
-                currentView = inflater.inflate(R.layout.row_layout, parent, false);
-            }
-            return currentView;
-        }
-    }
-
 }

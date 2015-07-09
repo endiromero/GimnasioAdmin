@@ -215,18 +215,19 @@ public final class R {
     }
     public static final class id {
         public static final int btnAbs=0x7f07004b;
-        public static final int btnAgregarEjercicio=0x7f07008b;
+        public static final int btnAgregarEjercicio=0x7f07008c;
         public static final int btnAntebrazo=0x7f070048;
         public static final int btnBiceps=0x7f070049;
         public static final int btnBorrarEjercicio=0x7f070082;
         public static final int btnCliente=0x7f07007a;
         public static final int btnCrearE=0x7f07005c;
+        public static final int btnCrearRutina=0x7f070092;
         public static final int btnDatosPersonales=0x7f070004;
         public static final int btnDeltoides=0x7f070046;
-        public static final int btnDia1=0x7f07008c;
-        public static final int btnDia2=0x7f07008d;
-        public static final int btnDia3=0x7f07008e;
-        public static final int btnDia4=0x7f07008f;
+        public static final int btnDia1=0x7f07008d;
+        public static final int btnDia2=0x7f07008e;
+        public static final int btnDia3=0x7f07008f;
+        public static final int btnDia4=0x7f070090;
         public static final int btnEjercicio=0x7f07007c;
         public static final int btnEntrenador=0x7f070078;
         public static final int btnEspalda=0x7f07004d;
@@ -258,7 +259,7 @@ public final class R {
         public static final int contenedorPorcenLeft=0x7f070011;
         public static final int contenedorTxtBtn=0x7f070080;
         public static final int contenedorTxts=0x7f070056;
-        public static final int elv=0x7f07008a;
+        public static final int elv=0x7f07008b;
         public static final int headerCedula=0x7f07006e;
         public static final int headerNombre=0x7f07006b;
         public static final int headerP1=0x7f07006c;
@@ -285,6 +286,7 @@ public final class R {
         public static final int lblME=0x7f07005f;
         public static final int lblNC=0x7f070068;
         public static final int lblNE=0x7f07005d;
+        public static final int lblNoRutina=0x7f070093;
         public static final int lblNombreEC=0x7f070062;
         public static final int lblNombreEjercicio=0x7f070081;
         public static final int lblNombreZona=0x7f070051;
@@ -305,7 +307,7 @@ public final class R {
         public static final int lsEjercicios=0x7f07004f;
         public static final int lsEntrenadores=0x7f070055;
         public static final int lsEntrenadoresC=0x7f07003c;
-        public static final int lsRutina=0x7f070090;
+        public static final int lsRutina=0x7f070091;
         public static final int pbEntrenador=0x7f070060;
         public static final int pbListaClientes=0x7f07003f;
         public static final int pbLogin=0x7f070074;
@@ -352,6 +354,7 @@ public final class R {
         public static final int txtPrimerApellidoE=0x7f070059;
         public static final int txtPulso=0x7f070021;
         public static final int txtPwd=0x7f070072;
+        public static final int txtRepeticiones=0x7f07008a;
         public static final int txtSegundoApellido=0x7f07000b;
         public static final int txtSegundoApellidoE=0x7f07005a;
         public static final int txtSubes=0x7f070013;

@@ -71,7 +71,8 @@
             android:name="com.ice1155.UI.RutinaActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.Holo.NoActionBar" >
+            android:theme="@android:style/Theme.Holo.NoActionBar"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="com.ice1155.UI.ViewEjerciciosActivity"
