@@ -94,7 +94,11 @@ public class ClienteActivity extends Activity {
     private TextView lblNombreE;
     private TextView lblPrimerApellidoE;
     private TextView lblSegundoApellidoE;
+
     private String cedulaEntrenador;
+    private String nombreEntrenador;
+    private String pApellido;
+    private String sApellido;
 
 	// Botones
 	private Button btnDatosP;
@@ -205,8 +209,8 @@ public class ClienteActivity extends Activity {
 	public void guardar(View v) {
         // edit
         if (code == 1) {
-            Entrenador e = new Entrenador();
-            e.setCedula(cedulaEntrenador);
+            Entrenador ent = new Entrenador(cedulaEntrenador, nombreEntrenador, pApellido, sApellido);
+            String e = gson.toJson(ent);
 
             Calendar cl = new GregorianCalendar();
             cl.set(Calendar.HOUR_OF_DAY, 0);
@@ -228,7 +232,7 @@ public class ClienteActivity extends Activity {
                 sexo = false;
             try {
                 Cliente c = new Cliente(Long.parseLong(txtCedula.getText()
-                        .toString()), e, txtApellido1.getText().toString(),
+                        .toString()), ent, txtApellido1.getText().toString(),
                         txtApellido2.getText().toString(), txtNombre.getText()
                         .toString(), d, fechaNacimiento, edad, sexo,
                         Double.parseDouble(txtEstatura.getText().toString()),
@@ -269,7 +273,10 @@ public class ClienteActivity extends Activity {
                 json.accumulate("nombre", c.getNombre());
                 json.accumulate("fechaNacimiento", c.getFechaNacimiento());
                 json.accumulate("fechaMedicion", d);
-                json.accumulate("entrenador", e);
+
+                String entrenador = gson.toJson(e);
+
+                json.accumulate("entrenador", c.getentrenador_id());
                 json.accumulate("sexo" ,c.isSexo());
                 json.accumulate("umbilical", c.getUmbilical());
                 json.accumulate("calReposoPorG",c.getCalReposoPorG());
@@ -311,8 +318,8 @@ public class ClienteActivity extends Activity {
             }
         }
 
-		Entrenador e = new Entrenador();
-		e.setCedula(cedulaEntrenador);
+		Entrenador ent = new Entrenador(cedulaEntrenador, nombreEntrenador, pApellido, sApellido);
+        String e = gson.toJson(ent);
 
 		Calendar cl = new GregorianCalendar();
 		cl.set(Calendar.HOUR_OF_DAY, 0);
@@ -323,8 +330,8 @@ public class ClienteActivity extends Activity {
 
 		Date d = cl.getTime();
 
-        DateFormat df = new SimpleDateFormat("YYYY-mm-ddTHH:mm:ssZ");
-        String date = df.format(d);
+//        DateFormat df = new SimpleDateFormat("YYYY-mm-ddTHH:mm:ssZ");
+ //       String date = df.format(d);
 
 		boolean sexo = true;
 		if (rbMasc.isSelected())
@@ -333,7 +340,7 @@ public class ClienteActivity extends Activity {
 			sexo = false;
 		try {
 			Cliente c = new Cliente(Long.parseLong(txtCedula.getText()
-					.toString()), e, txtApellido1.getText().toString(),
+					.toString()), ent, txtApellido1.getText().toString(),
 					txtApellido2.getText().toString(), txtNombre.getText()
 							.toString(), d, fechaNacimiento, edad, sexo,
 					Double.parseDouble(txtEstatura.getText().toString()),
@@ -367,7 +374,6 @@ public class ClienteActivity extends Activity {
 					Double.parseDouble(txtMusculo.getText().toString()),
 					txtObservaciones.getText().toString());
 
-
             JSONObject json = new JSONObject();
             json.accumulate("segundoApellido", c.getsegundo_apellido());
             json.accumulate("primerApellido", c.getprimer_apellido());
@@ -375,7 +381,7 @@ public class ClienteActivity extends Activity {
             json.accumulate("nombre", c.getNombre());
             json.accumulate("fechaNacimiento", c.getFechaNacimiento());
             json.accumulate("fechaMedicion", d);
-            json.accumulate("entrenador", e);
+            json.accumulate("entrenador_id", c.getentrenador_id());
             json.accumulate("sexo" ,c.isSexo());
             json.accumulate("umbilical", c.getUmbilical());
             json.accumulate("calReposoPorG",c.getCalReposoPorG());
@@ -642,9 +648,15 @@ public class ClienteActivity extends Activity {
                                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                     TextView tv = (TextView) view.findViewById(R.id.lblCedulaEC);
                                     TextView nombre = (TextView) view.findViewById(R.id.lblNombreEC);
-                                    cedulaEntrenador = tv.getText().toString();
+                                    TextView pApellidot = (TextView) view.findViewById(R.id.lblApe1EC);
+                                    TextView sApellidot = (TextView) view.findViewById(R.id.lblApe2EC);
 
-                                    Toast.makeText(getApplicationContext(), "Entrenador seleccionado: "+nombre.getText().toString(), Toast.LENGTH_LONG).show();
+                                    cedulaEntrenador = tv.getText().toString();
+                                    nombreEntrenador = nombre.getText().toString();
+                                    pApellido = pApellidot.getText().toString();
+                                    sApellido = sApellidot.getText().toString();
+
+                                    Toast.makeText(getApplicationContext(), "Entrenador seleccionado: "+nombreEntrenador, Toast.LENGTH_LONG).show();
                                 }
                             });
 

@@ -95,7 +95,7 @@ public class RutinaActivity extends Activity {
 	// Custom methods
     private void refreshEjercicios (ArrayList<EntryItem> dia1, ArrayList<EntryItem> dia2, ArrayList<EntryItem> dia3,
                                     ArrayList<EntryItem> dia4) {
-        //lsRutina.setAdapter(null);
+        lsRutina.setAdapter(null);
 
         ejercicios.add(new SectionItem("Día 1"));
         for (int i = 0; i < dia1.size(); i++) {
@@ -214,7 +214,7 @@ public class RutinaActivity extends Activity {
 
             } else if (diaDos) {
                 if(!txtRepeticiones.getText().toString().equals("")) {
-                    dia1.add(new EntryItem(ejercicio, descripcion));
+                    dia2.add(new EntryItem(ejercicio, descripcion));
                     refreshEjercicios(dia1, dia2, dia3, dia4);
                 }
                 else
@@ -223,7 +223,7 @@ public class RutinaActivity extends Activity {
 
             } else if (diaTres) {
                 if(!txtRepeticiones.getText().toString().equals("")) {
-                    dia1.add(new EntryItem(ejercicio, descripcion));
+                    dia3.add(new EntryItem(ejercicio, descripcion));
                     refreshEjercicios(dia1, dia2, dia3, dia4);
                 }
                 else
@@ -232,7 +232,7 @@ public class RutinaActivity extends Activity {
 
             } else {
                 if(!txtRepeticiones.getText().toString().equals("")) {
-                    dia1.add(new EntryItem(ejercicio, descripcion));
+                    dia4.add(new EntryItem(ejercicio, descripcion));
                     refreshEjercicios(dia1, dia2, dia3, dia4);
                 }
                 else
