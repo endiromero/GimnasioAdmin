@@ -1,23 +1,15 @@
 package com.ice1155.UI;
 
-import java.io.Serializable;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import com.google.gson.Gson;
-import com.ice1155.BL.ListEntrenadoresAdapter;
 import com.ice1155.DA.Cliente;
 import com.ice1155.DA.Entrenador;
 import com.ice1155.UT.Constantes;
@@ -33,7 +25,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -117,9 +108,7 @@ public class ClienteActivity extends Activity {
 
 	// Edad
 	private int anoNacimiento;
-	private int mesNacimiento;
-	private int diaNacimiento;
-	private Date fechaNacimiento;
+	private Date fechaNacimiento = new Date();
 
 	// Lista de entrenadores
 	private ListView lsEntrenadoresC;
@@ -220,10 +209,9 @@ public class ClienteActivity extends Activity {
 
             Date d = cl.getTime();
 
-            String fechaMed = String.valueOf(d);
-
-            DateTimeFormatter dtf = DateTimeFormat.forPattern("YYYY-mm-dd HH:mm:ss");
-            DateTime dateTime = dtf.parseDateTime(fechaMed);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'");
+            String fechaString = sdf.format(cl.getTime());
+            String fechaNac = sdf.format(fechaNacimiento);
 
             boolean sexo = true;
             if (rbMasc.isSelected())
@@ -234,7 +222,7 @@ public class ClienteActivity extends Activity {
                 Cliente c = new Cliente(Long.parseLong(txtCedula.getText()
                         .toString()), ent, txtApellido1.getText().toString(),
                         txtApellido2.getText().toString(), txtNombre.getText()
-                        .toString(), d, fechaNacimiento, edad, sexo,
+                        .toString(), fechaString, fechaNac, edad, sexo,
                         Double.parseDouble(txtEstatura.getText().toString()),
                         Double.parseDouble(txtPeso.getText().toString()),
                         Double.parseDouble(txtPecho.getText().toString()),
@@ -261,7 +249,7 @@ public class ClienteActivity extends Activity {
                         Double.parseDouble(txtindVice.getText().toString()),
                         Double.parseDouble(txtKcal.getText().toString()),
                         Double.parseDouble(txtPresion.getText().toString()),
-                        Double.parseDouble(txtPulso.getText().toString()),
+                        txtPulso.getText().toString(),
                         Double.parseDouble(txtGlucosa.getText().toString()),
                         Double.parseDouble(txtMusculo.getText().toString()),
                         txtObservaciones.getText().toString());
@@ -309,7 +297,16 @@ public class ClienteActivity extends Activity {
                 json.accumulate("tricepsPorG", c.getTricepsPorG());
                 json.accumulate("edad", c.getEdad());
 
-                rc.execute(json.toString(), "2");
+                String aDividir = json.toString();
+
+                char[] arreglo = aDividir.toCharArray();
+                arreglo[aDividir.length()-1] = ',';
+
+                String dividido = new String(arreglo);
+
+                String test = dividido + '"'+"entrenador"+'"'+":"+e+"}";
+
+                rc.execute(test, "1");
             } catch (Exception ex) {
                 ex.printStackTrace();
                 Toast.makeText(getApplicationContext(), R.string.err_unexp,
@@ -321,17 +318,16 @@ public class ClienteActivity extends Activity {
 		Entrenador ent = new Entrenador(cedulaEntrenador, nombreEntrenador, pApellido, sApellido);
         String e = gson.toJson(ent);
 
-		Calendar cl = new GregorianCalendar();
+        Calendar cl = new GregorianCalendar();
 		cl.set(Calendar.HOUR_OF_DAY, 0);
 		cl.set(Calendar.MINUTE, 0);
 		cl.set(Calendar.SECOND, 0);
 
 		int edad = Calendar.getInstance().get(Calendar.YEAR) - anoNacimiento;
 
-		Date d = cl.getTime();
-
-//        DateFormat df = new SimpleDateFormat("YYYY-mm-ddTHH:mm:ssZ");
- //       String date = df.format(d);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'");
+        String fechaString = sdf.format(cl.getTime());
+        String fechaNac = sdf.format(fechaNacimiento);
 
 		boolean sexo = true;
 		if (rbMasc.isSelected())
@@ -342,7 +338,7 @@ public class ClienteActivity extends Activity {
 			Cliente c = new Cliente(Long.parseLong(txtCedula.getText()
 					.toString()), ent, txtApellido1.getText().toString(),
 					txtApellido2.getText().toString(), txtNombre.getText()
-							.toString(), d, fechaNacimiento, edad, sexo,
+							.toString(), fechaString, fechaNac, edad, sexo,
 					Double.parseDouble(txtEstatura.getText().toString()),
 					Double.parseDouble(txtPeso.getText().toString()),
 					Double.parseDouble(txtPecho.getText().toString()),
@@ -369,7 +365,7 @@ public class ClienteActivity extends Activity {
 					Double.parseDouble(txtindVice.getText().toString()),
 					Double.parseDouble(txtKcal.getText().toString()),
 					Double.parseDouble(txtPresion.getText().toString()),
-					Double.parseDouble(txtPulso.getText().toString()),
+					txtPulso.getText().toString(),
 					Double.parseDouble(txtGlucosa.getText().toString()),
 					Double.parseDouble(txtMusculo.getText().toString()),
 					txtObservaciones.getText().toString());
@@ -380,8 +376,8 @@ public class ClienteActivity extends Activity {
             json.accumulate("observaciones", c.getObservaciones());
             json.accumulate("nombre", c.getNombre());
             json.accumulate("fechaNacimiento", c.getFechaNacimiento());
-            json.accumulate("fechaMedicion", d);
-            json.accumulate("entrenador_id", c.getentrenador_id());
+            json.accumulate("fechaMedicion", c.getFechaMed());
+            //json.put("entrenador", e);
             json.accumulate("sexo" ,c.isSexo());
             json.accumulate("umbilical", c.getUmbilical());
             json.accumulate("calReposoPorG",c.getCalReposoPorG());
@@ -416,7 +412,16 @@ public class ClienteActivity extends Activity {
             json.accumulate("tricepsPorG", c.getTricepsPorG());
             json.accumulate("edad", c.getEdad());
 
-			rc.execute(json.toString(), "1");
+            String aDividir = json.toString();
+
+            char[] arreglo = aDividir.toCharArray();
+            arreglo[aDividir.length()-1] = ',';
+
+            String dividido = new String(arreglo);
+
+            String test = dividido + '"'+"entrenador"+'"'+":"+e+"}";
+
+			rc.execute(test, "1");
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			Toast.makeText(getApplicationContext(), R.string.err_unexp,
@@ -486,10 +491,11 @@ public class ClienteActivity extends Activity {
 				new OnDateSetListener() {
 					public void onDateSet(DatePicker datepicker,
 							int selectedyear, int selectedmonth, int selectedday) {
-						anoNacimiento = selectedyear;
-						mesNacimiento = selectedmonth;
-						diaNacimiento = selectedday;
-						fechaNacimiento = new Date(anoNacimiento, mesNacimiento, diaNacimiento);
+                        anoNacimiento = selectedyear;
+						fechaNacimiento = new Date();
+                        fechaNacimiento.setYear(selectedyear);
+                        fechaNacimiento.setMonth(selectedmonth);
+                        fechaNacimiento.setDate(selectedday);
 					}
 				}, mYear, mMonth, mDay);
 		mDatePicker.setTitle("Ingrese la fecha de nacimiento");

@@ -2,6 +2,13 @@
 <items version="2" >
 
     <item
+        jar="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/libs/json-simple-1.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="5d6f9b6a9ddca2a28c0216cc44efb2e20d9c23b5">
+        <dex dex="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/build/intermediates/pre-dexed/debug/json-simple-1.1.1-9330a57ce9d72fe8b400835a6b88525243c0350b.jar" />
+    </item>
+    <item
         jar="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/libs/commons-codec-1.10.jar"
         jumboMode="false"
         revision="22.0.1"

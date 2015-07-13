@@ -5,8 +5,8 @@ import java.io.Serializable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Entrenador implements Parcelable, Serializable {
-	private static final long serialVersionUID = -6505451520579451706L;
+public class Entrenador implements Parcelable {
+	//private static final long serialVersionUID = -6505451520579451706L;
 	private String cedula;
 	private String nombre;
 	private String primerApellido;
@@ -81,9 +81,9 @@ public class Entrenador implements Parcelable, Serializable {
 		this.segundoApellido = segundoApellido;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+	//public static long getSerialversionuid() {
+	//	return serialVersionUID;
+	//}
 	
 	
 }

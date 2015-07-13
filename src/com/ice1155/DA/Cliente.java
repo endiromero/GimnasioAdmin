@@ -14,10 +14,10 @@ public class Cliente implements Serializable {
 	private String primer_apellido;
 	private String segundo_apellido;
 	private String nombre;
-	private Date fecha_nacimiento;
+	private String fecha_nacimiento;
 	private int edad;
 	private boolean sexo;
-	private Date fechaMed;
+	private String fechaMed;
 
 	// Medidas corporales
 	private double estatura;
@@ -49,7 +49,7 @@ public class Cliente implements Serializable {
 	private double indVicePorG;
 	private double calReposo;
 	private double presionPorG;
-	private double pulsoPorG;
+	private String pulsoPorG;
 	private double glucosaPorG;
 
 	private String observaciones;
@@ -67,8 +67,8 @@ public class Cliente implements Serializable {
 	};*/
 
 	public Cliente(long carne, Entrenador entrenador_id,
-			String primer_apellido, String segundo_apellido, String nombre, Date fechaMed,
-			Date fechaNacimiento, int edad, boolean sexo, double estatura,
+			String primer_apellido, String segundo_apellido, String nombre, String fechaMed,
+			String fechaNacimiento, int edad, boolean sexo, double estatura,
 			double pesoKgs, double pecho, double espalda, double umbilical,
 			double caderas, double musloDer, double musloIzq, double brazoDer,
 			double brazoIzq, double antebrazoDer, double antebrazoIzq,
@@ -76,7 +76,7 @@ public class Cliente implements Serializable {
 			double subescapularPorG, double supraPorG, double abdominalPorG,
 			double gastroPorG, double pechoPorG, double porcentajeGrasa,
 			double porcenMasaMuscPorG, double imcPorG, double indVicePorG,
-			double calReposoPorG, double presionPorG, double pulsoPorG,
+			double calReposoPorG, double presionPorG, String pulsoPorG,
 			double glucosaPorG, double musculoPorG, String observaciones) {
 		super();
 		this.carne = carne;
@@ -176,11 +176,11 @@ public class Cliente implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public Date getFechaNacimiento() {
+	public String getFechaNacimiento() {
 		return fecha_nacimiento;
 	}
 
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fecha_nacimiento = fechaNacimiento;
 	}
 
@@ -408,11 +408,11 @@ public class Cliente implements Serializable {
 		this.presionPorG = presionPorG;
 	}
 
-	public double getPulsoPorG() {
+	public String getPulsoPorG() {
 		return pulsoPorG;
 	}
 
-	public void setPulsoPorG(double pulsoPorG) {
+	public void setPulsoPorG(String pulsoPorG) {
 		this.pulsoPorG = pulsoPorG;
 	}
 
@@ -432,7 +432,15 @@ public class Cliente implements Serializable {
 		this.observaciones = observaciones;
 	}
 
-	@Override
+    public String getFechaMed() {
+        return fechaMed;
+    }
+
+    public void setFechaMed(String fechaMed) {
+        this.fechaMed = fechaMed;
+    }
+
+    @Override
 	public String toString() {
 		return "Cliente [carne=" + carne + ", entrenador_id=" + entrenador_id
 				+ ", primer_apellido=" + primer_apellido
