@@ -7,8 +7,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Cliente implements Serializable {
-	private long carne;
+    private static final long serialVersionUID = 1L;
 
+	private long carne;
+    private long id;
 	private Entrenador entrenador_id;
 	// Informacion general
 	private String primer_apellido;
@@ -220,7 +222,55 @@ public class Cliente implements Serializable {
 		return pecho;
 	}
 
-	public void setPecho(double pecho) {
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Entrenador getEntrenador_id() {
+        return entrenador_id;
+    }
+
+    public void setEntrenador_id(Entrenador entrenador_id) {
+        this.entrenador_id = entrenador_id;
+    }
+
+    public String getPrimer_apellido() {
+        return primer_apellido;
+    }
+
+    public void setPrimer_apellido(String primer_apellido) {
+        this.primer_apellido = primer_apellido;
+    }
+
+    public String getSegundo_apellido() {
+        return segundo_apellido;
+    }
+
+    public void setSegundo_apellido(String segundo_apellido) {
+        this.segundo_apellido = segundo_apellido;
+    }
+
+    public String getFecha_nacimiento() {
+        return fecha_nacimiento;
+    }
+
+    public void setFecha_nacimiento(String fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
+    }
+
+    public double getCalReposo() {
+        return calReposo;
+    }
+
+    public void setCalReposo(double calReposo) {
+        this.calReposo = calReposo;
+    }
+
+    public void setPecho(double pecho) {
 		this.pecho = pecho;
 	}
 

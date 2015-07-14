@@ -655,6 +655,18 @@
             android:onClick="guardar"
             android:text="@string/btnGuardar"
             android:textColor="#ffffff" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pbCliente"
+            android:layout_below="@+id/btnGuardar"
+            android:visibility="invisible"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:indeterminate="false"/>
+
     </RelativeLayout>
 
 </RelativeLayout>

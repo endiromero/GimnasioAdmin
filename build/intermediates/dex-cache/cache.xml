@@ -2,11 +2,25 @@
 <items version="2" >
 
     <item
-        jar="/home/pamobo0609/AndroidStudioProjects/GimnasioAdmin/libs/json-simple-1.1.1.jar"
+        jar="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/libs/android-support-v4.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="5d6f9b6a9ddca2a28c0216cc44efb2e20d9c23b5">
-        <dex dex="/home/pamobo0609/AndroidStudioProjects/GimnasioAdmin/build/intermediates/pre-dexed/debug/json-simple-1.1.1-85f70dfb9535ed398866384873d1bf819b3b7e7c.jar" />
+        sha1="3e4e879d0b3dc11f2feb3f55e77e3b5bd82c4a28">
+        <dex dex="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/build/intermediates/pre-dexed/debug/android-support-v4-3d5b881fa2cc76982de090780b95e91024e81796.jar" />
+    </item>
+    <item
+        jar="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/libs/commons-codec-1.10.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4b95f4897fa13f2cd904aee711aeafc0c5295cd8">
+        <dex dex="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/build/intermediates/pre-dexed/debug/commons-codec-1.10-ed0ff4dd7b6e30e9be7b74e7b632a25b4efb8fe8.jar" />
+    </item>
+    <item
+        jar="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/libs/gson-2.2.4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
+        <dex dex="/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/build/intermediates/pre-dexed/debug/gson-2.2.4-9d9e8059baeb1217e696dc2805d99662e63ee454.jar" />
     </item>
 
 </items>

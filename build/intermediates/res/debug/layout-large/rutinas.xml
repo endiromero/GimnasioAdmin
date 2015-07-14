@@ -174,4 +174,13 @@
         android:layout_alignLeft="@+id/lsRutina"
         android:layout_alignStart="@+id/lsRutina"/>
 
-</RelativeLayout><!-- From: file:/home/pamobo0609/AndroidStudioProjects/GimnasioAdmin/res/layout-large/rutinas.xml -->
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pbRutina"
+        android:visibility="invisible"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout><!-- From: file:/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/res/layout-large/rutinas.xml -->

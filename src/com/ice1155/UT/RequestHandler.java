@@ -153,12 +153,10 @@ public class RequestHandler {
 			return response.toString();
 
 		} catch (Exception e) {
-
 			e.printStackTrace();
 			return null;
 
 		} finally {
-
 			if (connection != null) {
 				connection.disconnect();
 			}

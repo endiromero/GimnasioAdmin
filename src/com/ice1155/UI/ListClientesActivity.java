@@ -25,6 +25,9 @@ public class ListClientesActivity extends Activity {
 	private ProgressBar pbClientes;
     private ArrayList<Cliente> arr = new ArrayList<Cliente>();
 
+    // cliente seleccionado
+    public static Cliente c = null;
+
 	private RequestHandler rh = new RequestHandler();
 	private Gson gson = new Gson();
     private int code;
@@ -45,20 +48,19 @@ public class ListClientesActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (code) {
                     case 0:
-                        TextView carne = (TextView) view.findViewById(R.id.txtIdClienteAll);
                         TextView nombre = (TextView) view.findViewById(R.id.txtNombreClienteAll);
 
                         Intent i = new Intent(getApplicationContext(), RutinaActivity.class);
-                        i.putExtra("carne", "" + carne.getText().toString());
+                        c = arr.get(position);
+                        i.putExtra("carne", c.getId());
                         i.putExtra("nombre", nombre.getText().toString());
                         startActivity(i);
                         break;
 
                     case 1:
-                        Cliente c = arr.get(position);
+                        c = arr.get(position);
                         Intent i2 = new Intent(getApplicationContext(), ClienteActivity.class);
                         i2.putExtra("code", 1);
-                        i2.putExtra("cliente", c);
                         startActivity(i2);
                         break;
                 }

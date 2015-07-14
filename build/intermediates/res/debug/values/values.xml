@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/home/pamobo0609/AndroidStudioProjects/GimnasioAdmin/res/values/dimens.xml -->
+    <!-- From: file:/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="navigation_drawer_width">240dp</dimen>
-    <!-- From: file:/home/pamobo0609/AndroidStudioProjects/GimnasioAdmin/res/values/strings.xml -->
+    <!-- From: file:/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/res/values/strings.xml -->
     <eat-comment/>
     <string name="Abdominal">Abdominal</string>
     <string name="action_example">Example action</string>
@@ -103,7 +103,7 @@
     <string name="txtUmbilical">Umbilical</string>
     <string name="txtUser">Digite el usuario</string>
     <string name="txtimc">I.M.C</string>
-    <!-- From: file:/home/pamobo0609/AndroidStudioProjects/GimnasioAdmin/res/values/styles.xml -->
+    <!-- From: file:/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--

@@ -8,7 +8,7 @@ buildscript {
 }
 apply plugin: 'com.android.application'
 
-dependencies {si
+dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
 }
 

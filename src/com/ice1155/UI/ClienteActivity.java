@@ -30,6 +30,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -80,6 +81,8 @@ public class ClienteActivity extends Activity {
 	private EditText txtGastroIzq;
 	private EditText txtMusculo;
 
+    private ProgressBar pbCliente;
+
     // data entrenadores
     private TextView lblCedulaE;
     private TextView lblNombreE;
@@ -113,7 +116,7 @@ public class ClienteActivity extends Activity {
 	// Lista de entrenadores
 	private ListView lsEntrenadoresC;
 	private ArrayList<Entrenador> arr;
-	public Entrenador _e;
+	public Entrenador _e = null;
 
     // data para edit
     private int code;
@@ -131,15 +134,16 @@ public class ClienteActivity extends Activity {
 		rlPorcen = (RelativeLayout) findViewById(R.id.llPorcenGrasa);
 		rlMedidas = (RelativeLayout) findViewById(R.id.llMedidas);
 		rlObs = (RelativeLayout) findViewById(R.id.llObservaciones);
+        pbCliente = (ProgressBar) findViewById(R.id.pbCliente);
 
 		try {
 			init();
 
             code = getIntent().getIntExtra("code", -1);
-            c = (Cliente) getIntent().getSerializableExtra("cliente");
+            c = ListClientesActivity.c;
             if (c != null && (code == 1)) {
                 txtCedula.setText(""+c.getCarne());
-                //entrenador
+                _e = c.getentrenador_id();
                 txtApellido1.setText(c.getprimer_apellido());
                 txtApellido2.setText(c.getsegundo_apellido());
                 txtNombre.setText(c.getNombre());
@@ -198,16 +202,19 @@ public class ClienteActivity extends Activity {
 	public void guardar(View v) {
         // edit
         if (code == 1) {
-            Entrenador ent = new Entrenador(cedulaEntrenador, nombreEntrenador, pApellido, sApellido);
-            String e = gson.toJson(ent);
+            if (_e == null) {
+                _e = new Entrenador(cedulaEntrenador, nombreEntrenador, pApellido, sApellido);
+            }
+            else
+                Toast.makeText(getApplicationContext(), "Entrenador: "+_e.getNombre()+" seleccionado", Toast.LENGTH_SHORT).show();
+
+            String e = gson.toJson(_e);
 
             Calendar cl = new GregorianCalendar();
             cl.set(Calendar.HOUR_OF_DAY, 0);
             cl.set(Calendar.MINUTE, 0);
 
             int edad = Calendar.getInstance().get(Calendar.YEAR) - anoNacimiento;
-
-            Date d = cl.getTime();
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'");
             String fechaString = sdf.format(cl.getTime());
@@ -220,7 +227,7 @@ public class ClienteActivity extends Activity {
                 sexo = false;
             try {
                 Cliente c = new Cliente(Long.parseLong(txtCedula.getText()
-                        .toString()), ent, txtApellido1.getText().toString(),
+                        .toString()), _e, txtApellido1.getText().toString(),
                         txtApellido2.getText().toString(), txtNombre.getText()
                         .toString(), fechaString, fechaNac, edad, sexo,
                         Double.parseDouble(txtEstatura.getText().toString()),
@@ -259,8 +266,8 @@ public class ClienteActivity extends Activity {
                 json.accumulate("primerApellido", c.getprimer_apellido());
                 json.accumulate("observaciones", c.getObservaciones());
                 json.accumulate("nombre", c.getNombre());
-                json.accumulate("fechaNacimiento", c.getFechaNacimiento());
-                json.accumulate("fechaMedicion", d);
+                json.accumulate("fechaNacimiento", fechaNac);
+                json.accumulate("fechaMedicion", fechaString);
                 json.accumulate("entrenador", c.getentrenador_id());
                 json.accumulate("sexo" ,c.isSexo());
                 json.accumulate("umbilical", c.getUmbilical());
@@ -306,8 +313,6 @@ public class ClienteActivity extends Activity {
                 rc.execute(test, "2");
             } catch (Exception ex) {
                 ex.printStackTrace();
-                Toast.makeText(getApplicationContext(), R.string.err_unexp,
-                        Toast.LENGTH_LONG).show();
                 finish();
             }
         }
@@ -420,9 +425,6 @@ public class ClienteActivity extends Activity {
 			rc.execute(test, "1");
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			Toast.makeText(getApplicationContext(), R.string.err_unexp,
-					Toast.LENGTH_LONG).show();
-			finish();
 		}
 	}
 
@@ -566,13 +568,13 @@ public class ClienteActivity extends Activity {
 	}
 
 	protected void startLoader() {
-		pd = ProgressDialog.show(this, "Cargando", "Por favor espere...", true);
+        pbCliente.setVisibility(View.VISIBLE);
+		Toast.makeText(getApplicationContext(), "Cargando, por favor espere...", Toast.LENGTH_SHORT).show();
 	}
 
-	protected void maskAsDone() {
-		if (pd != null)
-			pd.dismiss();
-	}
+    protected void markAsDone() {
+        pbCliente.setVisibility(View.INVISIBLE);
+    }
 
 	private class RequestCliente extends AsyncTask<String, Void, String> {
         private ClienteActivity activity;
@@ -584,7 +586,7 @@ public class ClienteActivity extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            activity.startLoader();
+            startLoader();
         }
 
         @Override
@@ -608,7 +610,7 @@ public class ClienteActivity extends Activity {
 
         @Override
         protected void onPostExecute(String response) {
-            activity.maskAsDone();
+                markAsDone();
                 switch (ACTION_CODE) {
                     // post clientes
                     case 1:
@@ -618,19 +620,20 @@ public class ClienteActivity extends Activity {
                             }
                             else {
                                 Toast.makeText(getApplicationContext(), "Éxito! Cliente creado satisfactoriamente!", Toast.LENGTH_SHORT).show();
+                                finish();
                             }
                         }
                         break;
 
                     // put clientes
                     case 2:
-                        if (response != null ){
-                            if(response.equals("")) {
-                                Toast.makeText(getApplicationContext(), "Ha ocurrido un error inesperado, asegúrese de que todos los campos estén llenos", Toast.LENGTH_SHORT).show();
-                            }
-                            else {
-                                Toast.makeText(getApplicationContext(), "Éxito! Cliente editado satisfactoriamente", Toast.LENGTH_SHORT).show();
-                            }
+                        if (response == null ){
+                            Toast.makeText(getApplicationContext(), "Éxito! Cliente editado satisfactoriamente", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(), "Ha ocurrido un error inesperado, asegúrese de que todos los campos estén llenos", Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                         break;
 

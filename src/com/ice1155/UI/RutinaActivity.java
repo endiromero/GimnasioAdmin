@@ -1,13 +1,20 @@
 package com.ice1155.UI;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
+import com.google.gson.Gson;
 import com.ice1155.BL.EntryAdapter;
 import com.ice1155.BL.EntryItem;
 import com.ice1155.BL.Item;
 import com.ice1155.BL.SectionItem;
+import com.ice1155.DA.Dia;
+import com.ice1155.DA.Ejercicio;
 import com.ice1155.DA.ListaPorZona;
+import com.ice1155.DA.Rutina;
 import com.ice1155.UT.Constantes;
 import com.ice1155.UT.RequestHandler;
 
@@ -28,6 +35,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class RutinaActivity extends Activity {
+    private Gson gson = new Gson();
+
 	private ListView expListView;
     private ListView lsRutina;
 	private ArrayList<Item> items = new ArrayList<Item>();
@@ -52,6 +61,9 @@ public class RutinaActivity extends Activity {
     private String ejercicio = "";
     private String descripcion = "";
 
+    // id asociado
+    private long idAsociado;
+
     // visual components
     private Button btnUno;
     private Button btnDos;
@@ -68,6 +80,9 @@ public class RutinaActivity extends Activity {
 		setContentView(R.layout.rutinas);
 
         try {
+            // perfil asociado
+            idAsociado = getIntent().getLongExtra("carne", 0);
+
             // renderizar las listas
             prepareListData(items);
 
@@ -261,9 +276,93 @@ public class RutinaActivity extends Activity {
         else {
             if (!dia1.isEmpty() || !dia2.isEmpty() || !dia3.isEmpty() || !dia4.isEmpty()) {
                 handler = new RutinaHandler();
+
+                String objetivo = txtObjetivo.getText().toString();
+
+                // fecha de realizacion de la rutina
+                Calendar cl = new GregorianCalendar();
+                cl.set(Calendar.HOUR_OF_DAY, 0);
+                cl.set(Calendar.MINUTE, 0);
+                cl.set(Calendar.SECOND, 0);
+
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'");
+                String fechaString = sdf.format(cl.getTime());
+
+                // dias de la rutina
+                ArrayList<Dia> dias = new ArrayList<Dia>();
+
+                ArrayList<Ejercicio> diaUnoE = new ArrayList<Ejercicio>();
+                for (int i = 0; i < dia1.size(); i++) {
+                    String[] id_nombre = dia1.get(i).title.split("\\.");
+
+                    String[] descripcionO = new String[0];
+                    descripcionO[0] = dia2.get(i).subtitle;
+
+                    Ejercicio e = new Ejercicio(descripcionO, id_nombre[0], id_nombre[1]);
+                    diaUnoE.add(e);
+                }
+                dias.add(new Dia(1,diaUnoE));
+
+                if (!dia2.isEmpty()) {
+                    ArrayList<Ejercicio> diaDosE = new ArrayList<Ejercicio>();
+                    for (int i = 0; i < dia2.size(); i++) {
+                        String[] id_nombre = dia2.get(i).title.split("\\.");
+                        String idHoja = id_nombre[0].replace(".", "");
+
+                        String[] descripcionO = new String[dia2.get(i).subtitle.length()];
+                        descripcionO[0] = dia2.get(i).subtitle;
+
+                        Ejercicio e = new Ejercicio(descripcionO, idHoja, id_nombre[1]);
+                        diaUnoE.add(e);
+                    }
+                    dias.add(new Dia(2,diaDosE));
+                }
+
+                if (!dia3.isEmpty()) {
+                    ArrayList<Ejercicio> diaTresE = new ArrayList<Ejercicio>();
+                    for (int i = 0; i < dia3.size(); i++) {
+                        String[] id_nombre = dia3.get(i).title.split("\\.");
+
+                        String[] descripcionO = new String[dia2.get(i).subtitle.length()];
+                        descripcionO[0] = dia2.get(i).subtitle;
+
+                        Ejercicio e = new Ejercicio(descripcionO, id_nombre[0], id_nombre[1]);
+                        diaUnoE.add(e);
+                    }
+                    dias.add(new Dia(3,diaTresE));
+                }
+
+                if (!dia4.isEmpty()) {
+                    ArrayList<Ejercicio> diaCuatroE = new ArrayList<Ejercicio>();
+                    for (int i = 0; i < dia4.size(); i++) {
+                        String[] id_nombre = dia1.get(i).title.split("\\.");
+
+                        String[] descripcionO = new String[dia2.get(i).subtitle.length()];
+                        descripcionO[0] = dia2.get(i).subtitle;
+
+                        Ejercicio e = new Ejercicio(descripcionO, id_nombre[0], id_nombre[1]);
+                        diaUnoE.add(e);
+                    }
+                    dias.add(new Dia(4,diaCuatroE));
+                }
+
+                Rutina r = new Rutina(objetivo, "", fechaString, dias);
+                String json = gson.toJson(r);
+
+                String aDividir = json.toString();
+
+                char[] arreglo = aDividir.toCharArray();
+                arreglo[aDividir.length()-1] = ',';
+
+                String dividido = new String(arreglo);
+
+                String test = dividido +'"'+"perfilAsociado"+'"'+":{"+idAsociado+"}}";
+
+                new RutinaHandler().execute(test);
             }
             else {
-                Toast.makeText(getApplicationContext(), "Es necesario al menos un día de ejercicios para crear la rutina", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Es necesario al menos un día de ejercicios para crear la rutina",
+                        Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -339,7 +438,7 @@ public class RutinaActivity extends Activity {
 
         @Override
         protected String doInBackground(String... params) {
-            return rh.POST(Constantes.GUARDAR_RUTINA, "");
+            return rh.POST(Constantes.GUARDAR_RUTINA, params[0]);
         }
 
         @Override
