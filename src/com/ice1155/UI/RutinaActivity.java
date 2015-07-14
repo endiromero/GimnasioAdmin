@@ -8,8 +8,12 @@ import com.ice1155.BL.EntryItem;
 import com.ice1155.BL.Item;
 import com.ice1155.BL.SectionItem;
 import com.ice1155.DA.ListaPorZona;
+import com.ice1155.UT.Constantes;
+import com.ice1155.UT.RequestHandler;
+
 import android.app.Activity;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +23,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +33,10 @@ public class RutinaActivity extends Activity {
 	private ArrayList<Item> items = new ArrayList<Item>();
 	private ListaPorZona lpz;
     private ArrayList<Item> ejercicios = new ArrayList<Item>();
+
+    // request handler
+    private RequestHandler rh = new RequestHandler();
+    private RutinaHandler handler;
 
     // dia selector
     private boolean diaUno = false;
@@ -48,6 +57,7 @@ public class RutinaActivity extends Activity {
     private Button btnDos;
     private Button btnTres;
     private Button btnCuatro;
+    private ProgressBar pbRutina;
     // common routine data
     private EditText txtObjetivo;
     private EditText txtRepeticiones;
@@ -71,6 +81,7 @@ public class RutinaActivity extends Activity {
             txtObjetivo = (EditText) findViewById(R.id.txtObjetivo);
             txtRepeticiones = (EditText) findViewById(R.id.txtRepeticiones);
             lblNoRutina = (TextView) findViewById(R.id.lblNoRutina);
+            pbRutina = (ProgressBar) findViewById(R.id.pbRutina);
 
             // Set headers and data
             EntryAdapter adapter = new EntryAdapter(this, items);
@@ -248,7 +259,12 @@ public class RutinaActivity extends Activity {
                     Toast.LENGTH_SHORT).show();
         }
         else {
-
+            if (!dia1.isEmpty() || !dia2.isEmpty() || !dia3.isEmpty() || !dia4.isEmpty()) {
+                handler = new RutinaHandler();
+            }
+            else {
+                Toast.makeText(getApplicationContext(), "Es necesario al menos un día de ejercicios para crear la rutina", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -302,5 +318,41 @@ public class RutinaActivity extends Activity {
         btnDos.setBackgroundResource(R.drawable.boton_dia_2);
         btnTres.setBackgroundResource(R.drawable.boton_dia_3);
         btnCuatro.setBackgroundResource(R.drawable.boton_dia_4_2);
+    }
+
+    private void startLoader() {
+        pbRutina.setVisibility(View.VISIBLE);
+        Toast.makeText(getApplicationContext(), "Guardando rutina, por favor espere...", Toast.LENGTH_SHORT).show();
+    }
+
+    private void markAsDone() {
+        pbRutina.setVisibility(View.INVISIBLE);
+    }
+
+    // Asynctask para la creacion de la rutina
+    private class RutinaHandler extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            startLoader();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            return rh.POST(Constantes.GUARDAR_RUTINA, "");
+        }
+
+        @Override
+        protected void onPostExecute(String response) {
+            markAsDone();
+            if(response != null) {
+                if (!response.equals("")) {
+
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Ha ocurrido un error inesperado, asegúrese de que los campos necesarios estén llenos...", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
     }
 }

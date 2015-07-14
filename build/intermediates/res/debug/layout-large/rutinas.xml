@@ -174,4 +174,4 @@
         android:layout_alignLeft="@+id/lsRutina"
         android:layout_alignStart="@+id/lsRutina"/>
 
-</RelativeLayout><!-- From: file:/home/jpmonge/AndroidProjects/FitnessCentreAdministrador/res/layout-large/rutinas.xml -->
+</RelativeLayout><!-- From: file:/home/pamobo0609/AndroidStudioProjects/GimnasioAdmin/res/layout-large/rutinas.xml -->

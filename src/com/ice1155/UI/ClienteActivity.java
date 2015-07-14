@@ -261,9 +261,6 @@ public class ClienteActivity extends Activity {
                 json.accumulate("nombre", c.getNombre());
                 json.accumulate("fechaNacimiento", c.getFechaNacimiento());
                 json.accumulate("fechaMedicion", d);
-
-                String entrenador = gson.toJson(e);
-
                 json.accumulate("entrenador", c.getentrenador_id());
                 json.accumulate("sexo" ,c.isSexo());
                 json.accumulate("umbilical", c.getUmbilical());
@@ -306,7 +303,7 @@ public class ClienteActivity extends Activity {
 
                 String test = dividido + '"'+"entrenador"+'"'+":"+e+"}";
 
-                rc.execute(test, "1");
+                rc.execute(test, "2");
             } catch (Exception ex) {
                 ex.printStackTrace();
                 Toast.makeText(getApplicationContext(), R.string.err_unexp,
@@ -377,7 +374,6 @@ public class ClienteActivity extends Activity {
             json.accumulate("nombre", c.getNombre());
             json.accumulate("fechaNacimiento", c.getFechaNacimiento());
             json.accumulate("fechaMedicion", c.getFechaMed());
-            //json.put("entrenador", e);
             json.accumulate("sexo" ,c.isSexo());
             json.accumulate("umbilical", c.getUmbilical());
             json.accumulate("calReposoPorG",c.getCalReposoPorG());
@@ -618,7 +614,7 @@ public class ClienteActivity extends Activity {
                     case 1:
                         if (response != null ){
                             if(response.equals("")) {
-                                Toast.makeText(getApplicationContext(), R.string.err_unexp, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"Ha ocurrido un error inesperado, asegúrese de que todos los campos estén llenos", Toast.LENGTH_SHORT).show();
                             }
                             else {
                                 Toast.makeText(getApplicationContext(), "Éxito! Cliente creado satisfactoriamente!", Toast.LENGTH_SHORT).show();
@@ -630,7 +626,7 @@ public class ClienteActivity extends Activity {
                     case 2:
                         if (response != null ){
                             if(response.equals("")) {
-                                Toast.makeText(getApplicationContext(), R.string.err_unexp, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Ha ocurrido un error inesperado, asegúrese de que todos los campos estén llenos", Toast.LENGTH_SHORT).show();
                             }
                             else {
                                 Toast.makeText(getApplicationContext(), "Éxito! Cliente editado satisfactoriamente", Toast.LENGTH_SHORT).show();
